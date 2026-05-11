@@ -1,0 +1,3 @@
+# Microsoft Word ficheiros temporários
+~$*.doc*
+*.tmp
