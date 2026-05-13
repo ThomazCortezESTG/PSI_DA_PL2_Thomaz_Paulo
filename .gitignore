@@ -1,3 +1,12 @@
 # Microsoft Word ficheiros temporários
 ~$*.doc*
 *.tmp
+
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Ficheiros específicos-usuário do Visual Studio
+*.user
+*.suo
