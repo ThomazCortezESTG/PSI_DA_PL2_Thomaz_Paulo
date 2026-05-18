@@ -1,7 +1,6 @@
 # Projeto IShopping
 
-Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de compras com um orçamento definido para verificar seesta dentro não o foi ultrapassado e gerar um recibo no final da compra caso que o utilizador queira.
-
+Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de compras com base num orçamento definido pelo utilizador, realizar a compra e no fim imprimir um recibo caso  outilizador o desejar.
 ---
 
 ## Funcionalidades
