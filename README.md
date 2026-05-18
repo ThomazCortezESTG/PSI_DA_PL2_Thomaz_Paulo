@@ -12,6 +12,7 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 - Calcular o total das compras
 - Verificar se o orçamento foi ultrapassado
 - Gerar recibo
+- Ver o histórico de compras da familia
 
 ---
 
