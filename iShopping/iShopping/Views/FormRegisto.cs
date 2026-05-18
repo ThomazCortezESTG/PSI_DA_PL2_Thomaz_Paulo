@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormRegisto : Form
+    public partial class FormRegisto : FormBase
     {
         public FormRegisto()
         {
@@ -22,6 +22,11 @@ namespace iShopping.Views
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
             this.Close();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
