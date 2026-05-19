@@ -44,19 +44,22 @@ namespace iShopping.Controllers
             }
         }
 
-        public bool login(string username, string pass)
+        public string login(string username, string pass)
         {
             try
             {
                 using (var db = new ShoppingContext())
                 {
                     var user = db.Utilizadores.FirstOrDefault(u => u.Username == username && u.Password == pass);
-                    return user != null;
+                    if (user != null)
+                        return user.Username;
+                    else
+                        return "";
                 }
             }
             catch
             {
-                return false;
+                return "";
             }
         }
     }
