@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace iShopping.Controllers
 {
-    class UtilizadorController
+    internal class UserController
     {
         public List<Utilizador> getUtilizadores()
         {
@@ -19,7 +18,7 @@ namespace iShopping.Controllers
             }
         }
 
-        public bool criarUser(string username, string pass, string nome)
+        public string criarUser(string username, string pass, string nome)
         {
             try
             {
@@ -28,23 +27,23 @@ namespace iShopping.Controllers
                     bool exists = db.Utilizadores.Any(u => u.Username == username);
 
                     if (exists)
-                        return false;
+                        return "1";
 
                     Utilizador newUser = new Utilizador(username, pass, nome);
 
                     db.Utilizadores.Add(newUser);
                     db.SaveChanges();
 
-                    return true;
+                    return "3";
                 }
             }
             catch
             {
-                return false;
+                return "2";
             }
         }
 
-        public string login(string username, string pass)
+        public Utilizador login(string username, string pass)
         {
             try
             {
@@ -52,14 +51,14 @@ namespace iShopping.Controllers
                 {
                     var user = db.Utilizadores.FirstOrDefault(u => u.Username == username && u.Password == pass);
                     if (user != null)
-                        return user.Username;
+                        return user;
                     else
-                        return "";
+                        return null;
                 }
             }
             catch
             {
-                return "";
+                return null;
             }
         }
     }
