@@ -81,5 +81,24 @@ namespace iShopping.Views
             path.CloseAllFigures();
             return path;
         }
+
+        protected void EnableDrag(Control control)
+        {
+            control.MouseDown += (s, e) => {
+                if (e.Button == MouseButtons.Left)
+                {
+                    dragging = true;
+                    dragStart = e.Location;
+                }
+            };
+            control.MouseMove += (s, e) => {
+                if (dragging)
+                    this.Location = new Point(
+                        this.Left + e.X - dragStart.X,
+                        this.Top + e.Y - dragStart.Y
+                    );
+            };
+            control.MouseUp += (s, e) => dragging = false;
+        }
     }
 }
