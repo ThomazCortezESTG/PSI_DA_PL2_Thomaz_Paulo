@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormMain : FormBase
+    public partial class FormEstatisticas : FormBase
     {
         private Utilizador User;
-        public FormMain(Utilizador user)
+        public FormEstatisticas(Utilizador user)
         {
             InitializeComponent();
             User = user;
@@ -22,9 +22,11 @@ namespace iShopping.Views
             labelUser.Text = $"Olá, {user.Nome}!";
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnInicio_Click(object sender, EventArgs e)
         {
-            Logout();
+            FormMain form = new FormMain(User);
+            form.Show();
+            this.Close();
         }
 
         private void buttonTiposArtigo_Click(object sender, EventArgs e)
@@ -69,11 +71,9 @@ namespace iShopping.Views
             this.Close();
         }
 
-        private void btnInicio_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            FormMain form = new FormMain(User);
-            form.Show();
-            this.Close();
+            Logout();
         }
     }
 }

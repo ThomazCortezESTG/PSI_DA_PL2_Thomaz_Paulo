@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormMain : FormBase
+    public partial class FormGestaoUtilizadores : FormBase
     {
         private Utilizador User;
-        public FormMain(Utilizador user)
+        public FormGestaoUtilizadores(Utilizador user)
         {
             InitializeComponent();
             User = user;
-            EnableDrag(panel1);
             labelUser.Text = $"Olá, {user.Nome}!";
+            EnableDrag(panel1);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
