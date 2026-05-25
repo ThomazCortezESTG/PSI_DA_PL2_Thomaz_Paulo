@@ -18,8 +18,8 @@ namespace iShopping
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Views.FormLogin());
             Database.SetInitializer(new AppDbInitializer());
+            Application.Run(new Views.FormLogin());
         }
     }
 }
