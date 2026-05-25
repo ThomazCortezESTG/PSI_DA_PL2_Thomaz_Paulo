@@ -35,8 +35,7 @@ namespace iShopping.Views
         {
             if (tbPassword.Text != tbRepetirPassword.Text) { MessageBox.Show("As palavras passes não se coincidem."); }
             else {
-
-                    UserController userController = new UserController();
+                UserController userController = new UserController();
                 string resposta = userController.criarUser(tbUsername.Text, tbPassword.Text, tbNome.Text);
                 switch (resposta) {
                     case "1":
