@@ -12,7 +12,7 @@ namespace iShopping.Models
 
         public Item_nao_previsto() { }
 
-        public Item_nao_previsto(int quantidade, float preco_unitario, Artigo artigo,string observacoes) : base(quantidade,preco_unitario,artigo) {
+        public Item_nao_previsto(int quantidade, float preco_unitario, Artigo artigo,Compra compra,string observacoes) : base(quantidade,preco_unitario,artigo,compra) {
             Observacoes = observacoes;
         }
     }

@@ -17,7 +17,6 @@ namespace iShopping.Models
         public Utilizador Utilizador { get; set; }
         public Utilizador AlteradoPor { get; set; }
         public Utilizador FechadoPor { get; set; }
-        public List<Item> Itens { get; set; } = new List<Item>();
 
         public Compra() { }
 

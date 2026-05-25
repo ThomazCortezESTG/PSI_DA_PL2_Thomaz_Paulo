@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace iShopping.Views
 {
@@ -35,6 +36,7 @@ namespace iShopping.Views
         private void btnLogin_Click(object sender, EventArgs e)
         {
             UserController userController = new UserController();
+
             Utilizador resposta = userController.login(tbUsername.Text,tbPassword.Text);
 
             if (resposta == null)
