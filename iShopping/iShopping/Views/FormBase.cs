@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace iShopping.Views
@@ -99,6 +100,17 @@ namespace iShopping.Views
                     );
             };
             control.MouseUp += (s, e) => dragging = false;
+        }
+
+        protected void Logout()
+        {
+            var result = MessageBox.Show("Tem a certeza que quer sair?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                FormLogin formLogin = new FormLogin();
+                formLogin.Show();
+                this.Close();
+            }
         }
     }
 }
