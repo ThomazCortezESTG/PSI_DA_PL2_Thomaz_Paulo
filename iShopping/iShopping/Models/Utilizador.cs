@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    internal class Utilizador
+    public class Utilizador
     {
         public int Id{ get; set; }
         public string Username{ get; set; }
