@@ -10,7 +10,7 @@ namespace iShopping.Models
     {
         public int Quantidade_prevista{ get; set; }
 
-        public Item_previsto(int quantidade, float preco_unitario, Artigo artigo,int quantidade_prevista) : base(quantidade, preco_unitario, artigo)
+        public Item_previsto(int quantidade, float preco_unitario, Artigo artigo,Compra compra,int quantidade_prevista) : base(quantidade, preco_unitario, artigo, compra)
         {
             Quantidade_prevista = quantidade_prevista;
         }

@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+
 
 namespace iShopping.Controllers
 {
@@ -29,7 +32,9 @@ namespace iShopping.Controllers
                     if (exists)
                         return "1";
 
-                    Utilizador newUser = new Utilizador(username, pass, nome);
+                    string encrypt = HashPassword(pass);
+
+                    Utilizador newUser = new Utilizador(username, encrypt, nome);
 
                     db.Utilizadores.Add(newUser);
                     db.SaveChanges();
@@ -49,7 +54,8 @@ namespace iShopping.Controllers
             {
                 using (var db = new ShoppingContext())
                 {
-                    var user = db.Utilizadores.FirstOrDefault(u => u.Username == username && u.Password == pass);
+                    string encrypt = HashPassword(pass);
+                    var user = db.Utilizadores.FirstOrDefault(u => u.Username == username && u.Password == encrypt);
                     if (user != null)
                         return user;
                     else
@@ -59,6 +65,16 @@ namespace iShopping.Controllers
             catch
             {
                 return null;
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                return String.Concat(hash
+                  .ComputeHash(Encoding.UTF8.GetBytes(password))
+                  .Select(item => item.ToString("x2")));
             }
         }
     }

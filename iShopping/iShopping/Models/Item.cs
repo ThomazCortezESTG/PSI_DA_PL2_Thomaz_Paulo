@@ -15,12 +15,15 @@ namespace iShopping.Models
         public float Preco_unitario{ get; set; }
 
         public Artigo Artigo { get; set; }
+
+        public Compra Compra { get; set; }
         public Item() { }
 
-        public Item(int quantidade,float preco_unitario,Artigo artigo) {
+        public Item(int quantidade,float preco_unitario,Artigo artigo,Compra compra) {
             Quantidade = quantidade;
             Preco_unitario = preco_unitario;
             Artigo = artigo;
+            Compra = compra;
         }
     }
 }
