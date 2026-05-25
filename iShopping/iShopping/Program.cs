@@ -1,5 +1,7 @@
-﻿using System;
+﻿using iShopping.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +19,7 @@ namespace iShopping
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Views.FormLogin());
+            Database.SetInitializer(new AppDbInitializer());
         }
     }
 }
