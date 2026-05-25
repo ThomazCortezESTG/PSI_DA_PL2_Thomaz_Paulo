@@ -43,7 +43,14 @@ namespace iShopping.Views
             {
                 MessageBox.Show("Username ou palavra-passe esta incorreto.", "Erro");
             }
-            else { MessageBox.Show(resposta.Nome, "a"); }
+            else
+            {
+                MessageBox.Show("Login efetuado com sucesso.", "Bem-vindo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormMain formMain = new FormMain(resposta);
+                formMain.Show();
+                this.Hide();
+            }
+
         }
     }
 }

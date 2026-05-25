@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormMain : FormBase
+    public partial class FormGestaoTiposArtigo : FormBase
     {
         private Utilizador User;
-        public FormMain(Utilizador user)
+        public FormGestaoTiposArtigo(Utilizador user)
         {
             InitializeComponent();
             User = user;

@@ -1,6 +1,6 @@
 ﻿namespace iShopping.Views
 {
-    partial class FormMain
+    partial class FormGestaoTiposArtigo
     {
         /// <summary>
         /// Required designer variable.
@@ -40,15 +40,10 @@
             this.btnArtigos = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.buttonTiposArtigo = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,12 +110,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnArtigos);
             this.splitContainer1.Panel1.Controls.Add(this.btnInicio);
             this.splitContainer1.Panel1.Controls.Add(this.buttonTiposArtigo);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.button8);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(1144, 574);
             this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 1;
@@ -187,8 +176,7 @@
             // 
             // btnInicio
             // 
-            this.btnInicio.BackColor = System.Drawing.Color.LightGreen;
-            this.btnInicio.Enabled = false;
+            this.btnInicio.BackColor = System.Drawing.Color.White;
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.Location = new System.Drawing.Point(3, 3);
             this.btnInicio.Name = "btnInicio";
@@ -200,7 +188,8 @@
             // 
             // buttonTiposArtigo
             // 
-            this.buttonTiposArtigo.BackColor = System.Drawing.Color.White;
+            this.buttonTiposArtigo.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonTiposArtigo.Enabled = false;
             this.buttonTiposArtigo.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTiposArtigo.Location = new System.Drawing.Point(3, 84);
             this.buttonTiposArtigo.Name = "buttonTiposArtigo";
@@ -210,57 +199,21 @@
             this.buttonTiposArtigo.UseVisualStyleBackColor = false;
             this.buttonTiposArtigo.Click += new System.EventHandler(this.buttonTiposArtigo_Click);
             // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(673, 15);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(243, 51);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "+ Nova Compra";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 84);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(906, 480);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(279, 37);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Compras em aberto:";
-            // 
-            // FormMain
+            // FormGestaoTiposArtigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 728);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
-            this.Name = "FormMain";
+            this.Name = "FormGestaoTiposArtigo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormMain";
+            this.Text = "FormGestaoTiposArtigo";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,9 +231,6 @@
         private System.Windows.Forms.Button btnOrcamentos;
         private System.Windows.Forms.Button btnArtigos;
         private System.Windows.Forms.Button btnEstatisticas;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button btnUtilizadores;
     }
 }
