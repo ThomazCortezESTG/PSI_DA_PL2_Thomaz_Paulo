@@ -77,5 +77,44 @@ namespace iShopping.Controllers
                   .Select(item => item.ToString("x2")));
             }
         }
+
+        public string editarUser(int id, string username, string pass, string nome)
+        {
+            try
+            {
+                using (var db = new ShoppingContext())
+                {
+                    bool exists = db.Utilizadores.Any(u => u.Username == username && u.Id != id);
+                    if (exists) return "1";
+
+                    var user = db.Utilizadores.Find(id);
+                    if (user == null) return "2";
+
+                    user.Username = username;
+                    user.Password = HashPassword(pass);
+                    user.Nome = nome;
+                    db.SaveChanges();
+                    return "3";
+                }
+            }
+            catch { return "2"; }
+        }
+
+        public string apagarUser(int id)
+        {
+            try
+            {
+                using (var db = new ShoppingContext())
+                {
+                    var user = db.Utilizadores.Find(id);
+                    if (user == null) return "2";
+
+                    db.Utilizadores.Remove(user);
+                    db.SaveChanges();
+                    return "3";
+                }
+            }
+            catch { return "2"; }
+        }
     }
 }
