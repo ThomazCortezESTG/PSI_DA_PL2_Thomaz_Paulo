@@ -15,7 +15,5 @@ namespace iShopping.Models
         public DbSet<Artigo> Artigos { get; set; }
         public DbSet<Compra> Compras{ get; set; }
         public DbSet<Item> Itens{ get; set; }
-        public DbSet<Item_previsto> Itens_previstos { get; set; }
-        public DbSet<Item_nao_previsto> Itens_nao_previstos { get; set; }
     }
 }
