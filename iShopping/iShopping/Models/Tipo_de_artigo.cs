@@ -19,5 +19,9 @@ namespace iShopping.Models
             Nome = nome;
             Descricao = descricao;
         }
+
+        public override string ToString() {
+            return Nome;
+        }
     }
 }
