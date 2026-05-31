@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    internal class Compra
+    public class Compra
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
         public float Preco_total { get; set; }
         public DateTime Data_criacao { get; set; }
-        public DateTime Data_alteracao { get; set; }
-        public DateTime Data_fecho { get; set; }
+        public DateTime? Data_alteracao { get; set; }
+        public DateTime? Data_fecho { get; set; }
         public Utilizador Utilizador { get; set; }
         public Utilizador AlteradoPor { get; set; }
         public Utilizador FechadoPor { get; set; }
+        public bool Fechada { get; set; } = false;
+        public List<Item_previsto> Itens { get; set; } = new List<Item_previsto>();
 
         public Compra() { }
 

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ArtigoController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Form1.cs">
@@ -67,7 +68,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202605271410547_InitialCreate.cs" />
+    <Compile Include="Migrations\202605271410547_InitialCreate.Designer.cs">
+      <DependentUpon>202605271410547_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202605301728428_AddFechadaToCompra.cs" />
+    <Compile Include="Migrations\202605301728428_AddFechadaToCompra.Designer.cs">
+      <DependentUpon>202605301728428_AddFechadaToCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202605301840311_AddItensToCompra.cs" />
+    <Compile Include="Migrations\202605301840311_AddItensToCompra.Designer.cs">
+      <DependentUpon>202605301840311_AddItensToCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202605301909031_FixDateTimeNullable.cs" />
+    <Compile Include="Migrations\202605301909031_FixDateTimeNullable.Designer.cs">
+      <DependentUpon>202605301909031_FixDateTimeNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbInitializer.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artigo.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Item.cs" />
@@ -160,6 +178,18 @@
     <Compile Include="Views\FormTipo.Designer.cs">
       <DependentUpon>FormTipo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\202605271410547_InitialCreate.resx">
+      <DependentUpon>202605271410547_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202605301728428_AddFechadaToCompra.resx">
+      <DependentUpon>202605301728428_AddFechadaToCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202605301840311_AddItensToCompra.resx">
+      <DependentUpon>202605301840311_AddItensToCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202605301909031_FixDateTimeNullable.resx">
+      <DependentUpon>202605301909031_FixDateTimeNullable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -174,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCompraPlaneada.resx">
+      <DependentUpon>FormCompraPlaneada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormEstatisticas.resx">
       <DependentUpon>FormEstatisticas.cs</DependentUpon>

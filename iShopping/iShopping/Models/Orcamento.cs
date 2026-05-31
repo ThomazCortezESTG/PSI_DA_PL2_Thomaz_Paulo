@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    internal class Orcamento
+    public class Orcamento
     {
         public int Id { get; set; }
         public float Montante { get; set; }

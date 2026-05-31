@@ -40,15 +40,15 @@
             this.btnArtigos = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.buttonTiposArtigo = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnNovaCompra = new System.Windows.Forms.Button();
+            this.dgvComprasAbertas = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComprasAbertas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,8 +118,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button8);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.btnNovaCompra);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvComprasAbertas);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(1144, 574);
             this.splitContainer1.SplitterDistance = 205;
@@ -210,27 +210,28 @@
             this.buttonTiposArtigo.UseVisualStyleBackColor = false;
             this.buttonTiposArtigo.Click += new System.EventHandler(this.buttonTiposArtigo_Click);
             // 
-            // button8
+            // btnNovaCompra
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(673, 15);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(243, 51);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "+ Nova Compra";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnNovaCompra.BackColor = System.Drawing.Color.White;
+            this.btnNovaCompra.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovaCompra.Location = new System.Drawing.Point(673, 15);
+            this.btnNovaCompra.Name = "btnNovaCompra";
+            this.btnNovaCompra.Size = new System.Drawing.Size(243, 51);
+            this.btnNovaCompra.TabIndex = 9;
+            this.btnNovaCompra.Text = "+ Nova Compra";
+            this.btnNovaCompra.UseVisualStyleBackColor = false;
+            this.btnNovaCompra.Click += new System.EventHandler(this.btnNovaCompra_Click);
             // 
-            // dataGridView1
+            // dgvComprasAbertas
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 84);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(906, 480);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvComprasAbertas.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvComprasAbertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvComprasAbertas.Location = new System.Drawing.Point(10, 84);
+            this.dgvComprasAbertas.Name = "dgvComprasAbertas";
+            this.dgvComprasAbertas.RowHeadersWidth = 82;
+            this.dgvComprasAbertas.RowTemplate.Height = 33;
+            this.dgvComprasAbertas.Size = new System.Drawing.Size(906, 480);
+            this.dgvComprasAbertas.TabIndex = 3;
             // 
             // label3
             // 
@@ -260,7 +261,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComprasAbertas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -279,8 +280,8 @@
         private System.Windows.Forms.Button btnArtigos;
         private System.Windows.Forms.Button btnEstatisticas;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DataGridView dgvComprasAbertas;
+        private System.Windows.Forms.Button btnNovaCompra;
         private System.Windows.Forms.Button btnUtilizadores;
     }
 }
