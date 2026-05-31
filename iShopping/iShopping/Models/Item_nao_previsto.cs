@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    internal class Item_nao_previsto : Item
+    public class Item_nao_previsto : Item
     {
         public string Observacoes { get; set; }
 
