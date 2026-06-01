@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    internal class ShoppingContext : DbContext
+    public class ShoppingContext : DbContext
     {
         public DbSet<Utilizador> Utilizadores { get; set; }
         public DbSet<Orcamento> Orcamentos { get; set; }

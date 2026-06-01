@@ -40,10 +40,18 @@
             this.btnArtigos = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.buttonTiposArtigo = new System.Windows.Forms.Button();
+            this.btnApagar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovaCompra = new System.Windows.Forms.Button();
+            this.dgvCompras = new System.Windows.Forms.DataGridView();
+            this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -110,6 +118,15 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnArtigos);
             this.splitContainer1.Panel1.Controls.Add(this.btnInicio);
             this.splitContainer1.Panel1.Controls.Add(this.buttonTiposArtigo);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnApagar);
+            this.splitContainer1.Panel2.Controls.Add(this.btnEditar);
+            this.splitContainer1.Panel2.Controls.Add(this.btnNovaCompra);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvCompras);
+            this.splitContainer1.Panel2.Controls.Add(this.cmbFiltro);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(1144, 574);
             this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 1;
@@ -199,6 +216,76 @@
             this.buttonTiposArtigo.UseVisualStyleBackColor = false;
             this.buttonTiposArtigo.Click += new System.EventHandler(this.buttonTiposArtigo_Click);
             // 
+            // btnApagar
+            // 
+            this.btnApagar.BackColor = System.Drawing.Color.White;
+            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.Location = new System.Drawing.Point(605, 477);
+            this.btnApagar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(187, 75);
+            this.btnApagar.TabIndex = 21;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = false;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.White;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(369, 477);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(187, 75);
+            this.btnEditar.TabIndex = 20;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNovaCompra
+            // 
+            this.btnNovaCompra.BackColor = System.Drawing.Color.White;
+            this.btnNovaCompra.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovaCompra.Location = new System.Drawing.Point(139, 477);
+            this.btnNovaCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNovaCompra.Name = "btnNovaCompra";
+            this.btnNovaCompra.Size = new System.Drawing.Size(187, 75);
+            this.btnNovaCompra.TabIndex = 19;
+            this.btnNovaCompra.Text = "+ Nova Compra";
+            this.btnNovaCompra.UseVisualStyleBackColor = false;
+            this.btnNovaCompra.Click += new System.EventHandler(this.btnNovaCompra_Click);
+            // 
+            // dgvCompras
+            // 
+            this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCompras.Location = new System.Drawing.Point(21, 84);
+            this.dgvCompras.Name = "dgvCompras";
+            this.dgvCompras.RowHeadersWidth = 82;
+            this.dgvCompras.RowTemplate.Height = 33;
+            this.dgvCompras.Size = new System.Drawing.Size(895, 374);
+            this.dgvCompras.TabIndex = 5;
+            this.dgvCompras.SelectionChanged += new System.EventHandler(this.dgvCompras_SelectionChanged);
+            // 
+            // cmbFiltro
+            // 
+            this.cmbFiltro.FormattingEnabled = true;
+            this.cmbFiltro.Location = new System.Drawing.Point(268, 23);
+            this.cmbFiltro.Name = "cmbFiltro";
+            this.cmbFiltro.Size = new System.Drawing.Size(241, 33);
+            this.cmbFiltro.TabIndex = 4;
+            this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(14, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(248, 37);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Filtrar por estado:";
+            // 
             // FormPlaneamentoCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -212,8 +299,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +322,11 @@
         private System.Windows.Forms.Button btnArtigos;
         private System.Windows.Forms.Button btnEstatisticas;
         private System.Windows.Forms.Button btnUtilizadores;
+        private System.Windows.Forms.DataGridView dgvCompras;
+        private System.Windows.Forms.ComboBox cmbFiltro;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnNovaCompra;
     }
 }
