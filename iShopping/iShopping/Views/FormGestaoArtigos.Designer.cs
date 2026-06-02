@@ -236,6 +236,7 @@
             this.dgvArtigos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArtigos.Location = new System.Drawing.Point(16, 12);
             this.dgvArtigos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvArtigos.MultiSelect = false;
             this.dgvArtigos.Name = "dgvArtigos";
             this.dgvArtigos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -248,6 +249,7 @@
             this.dgvArtigos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArtigos.RowHeadersWidth = 82;
             this.dgvArtigos.RowTemplate.Height = 33;
+            this.dgvArtigos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArtigos.Size = new System.Drawing.Size(671, 285);
             this.dgvArtigos.TabIndex = 3;
             this.dgvArtigos.SelectionChanged += new System.EventHandler(this.dgvArtigos_SelectionChanged);

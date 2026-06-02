@@ -19,3 +19,5 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 
 - Linguagem: C#
 - Interface: Windows forms
+
+![Logo do IPL.](ipllogo.png "Logo do IPL.")

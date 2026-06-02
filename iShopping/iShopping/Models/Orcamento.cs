@@ -35,12 +35,5 @@ namespace iShopping.Models
         {
             Montante -= valor;
         }
-
-        public void alterar_montante(float valor, Utilizador utilizador)
-        {
-            Montante = valor;
-            Ultima_alteracao = DateTime.Now;
-            AlteradoPor = utilizador;
-        }
     }
 }
