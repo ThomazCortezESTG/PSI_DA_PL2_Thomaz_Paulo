@@ -300,6 +300,7 @@
             this.dgvTipos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTipos.RowHeadersWidth = 82;
             this.dgvTipos.RowTemplate.Height = 33;
+            this.dgvTipos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTipos.Size = new System.Drawing.Size(671, 285);
             this.dgvTipos.TabIndex = 2;
             this.dgvTipos.SelectionChanged += new System.EventHandler(this.dgvTipos_SelectionChanged);

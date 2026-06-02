@@ -61,6 +61,7 @@ namespace iShopping.Views
             bool temSelecao = selectedId != -1;
             btnEditar.Enabled = temSelecao;
             btnApagar.Enabled = temSelecao;
+            btnExportar.Enabled = temSelecao;
         }
 
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,5 +133,26 @@ namespace iShopping.Views
         private void btnCompras_Click(object sender, EventArgs e) { new FormPlaneamentoCompras(User).Show(); this.Close(); }
         private void btnEstatisticas_Click(object sender, EventArgs e) { new FormEstatisticas(User).Show(); this.Close(); }
         private void btnUtilizadores_Click(object sender, EventArgs e) { new FormGestaoUtilizadores(User).Show(); this.Close(); }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            string resposta = _controller.exportarCompra(selectedId,User);
+
+
+            switch (resposta) {
+                case "1":
+                    MessageBox.Show("Não é possível salvar porque a compra ainda náo esta fechada!", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case "2":
+                    MessageBox.Show("Erro ao tentar exportar!", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case "3":
+                    MessageBox.Show("Ficheiro salvado com sucesso!", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
+        }
     }
 }
