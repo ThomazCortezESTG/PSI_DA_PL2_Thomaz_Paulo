@@ -44,16 +44,16 @@
             this.btnInicio = new System.Windows.Forms.Button();
             this.buttonTiposArtigo = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.dgvOrcamentos = new System.Windows.Forms.DataGridView();
             this.btnApagar = new System.Windows.Forms.Button();
-            this.txtMontante = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.txtMes = new System.Windows.Forms.TextBox();
-            this.a = new System.Windows.Forms.Label();
-            this.l = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtAno = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMes = new System.Windows.Forms.TextBox();
+            this.txtMontante = new System.Windows.Forms.TextBox();
+            this.dgvOrcamentos = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -69,7 +69,7 @@
             this.panel1.Controls.Add(this.labelUser);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(9, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(858, 98);
             this.panel1.TabIndex = 0;
@@ -79,7 +79,7 @@
             this.btnLogout.BackColor = System.Drawing.Color.White;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(758, 48);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(87, 41);
             this.btnLogout.TabIndex = 1;
@@ -119,7 +119,7 @@
             this.splitContainer1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Location = new System.Drawing.Point(9, 112);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -134,17 +134,17 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnLimpar);
-            this.splitContainer1.Panel2.Controls.Add(this.dgvOrcamentos);
-            this.splitContainer1.Panel2.Controls.Add(this.btnApagar);
-            this.splitContainer1.Panel2.Controls.Add(this.txtMontante);
-            this.splitContainer1.Panel2.Controls.Add(this.btnEditar);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.btnLimpar);
+            this.splitContainer1.Panel2.Controls.Add(this.btnApagar);
+            this.splitContainer1.Panel2.Controls.Add(this.btnEditar);
             this.splitContainer1.Panel2.Controls.Add(this.btnAdicionar);
-            this.splitContainer1.Panel2.Controls.Add(this.txtMes);
-            this.splitContainer1.Panel2.Controls.Add(this.a);
-            this.splitContainer1.Panel2.Controls.Add(this.l);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.txtAno);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.txtMes);
+            this.splitContainer1.Panel2.Controls.Add(this.txtMontante);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvOrcamentos);
             this.splitContainer1.Size = new System.Drawing.Size(858, 459);
             this.splitContainer1.SplitterDistance = 153;
             this.splitContainer1.SplitterWidth = 3;
@@ -155,7 +155,7 @@
             this.btnUtilizadores.BackColor = System.Drawing.Color.White;
             this.btnUtilizadores.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUtilizadores.Location = new System.Drawing.Point(2, 391);
-            this.btnUtilizadores.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUtilizadores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUtilizadores.Name = "btnUtilizadores";
             this.btnUtilizadores.Size = new System.Drawing.Size(140, 60);
             this.btnUtilizadores.TabIndex = 15;
@@ -168,7 +168,7 @@
             this.btnEstatisticas.BackColor = System.Drawing.Color.White;
             this.btnEstatisticas.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstatisticas.Location = new System.Drawing.Point(2, 326);
-            this.btnEstatisticas.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEstatisticas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEstatisticas.Name = "btnEstatisticas";
             this.btnEstatisticas.Size = new System.Drawing.Size(140, 60);
             this.btnEstatisticas.TabIndex = 14;
@@ -181,7 +181,7 @@
             this.btnCompras.BackColor = System.Drawing.Color.White;
             this.btnCompras.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompras.Location = new System.Drawing.Point(2, 262);
-            this.btnCompras.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCompras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCompras.Name = "btnCompras";
             this.btnCompras.Size = new System.Drawing.Size(140, 60);
             this.btnCompras.TabIndex = 13;
@@ -195,7 +195,7 @@
             this.btnOrcamentos.Enabled = false;
             this.btnOrcamentos.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrcamentos.Location = new System.Drawing.Point(2, 197);
-            this.btnOrcamentos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOrcamentos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOrcamentos.Name = "btnOrcamentos";
             this.btnOrcamentos.Size = new System.Drawing.Size(140, 60);
             this.btnOrcamentos.TabIndex = 12;
@@ -208,7 +208,7 @@
             this.btnArtigos.BackColor = System.Drawing.Color.White;
             this.btnArtigos.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArtigos.Location = new System.Drawing.Point(2, 132);
-            this.btnArtigos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArtigos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnArtigos.Name = "btnArtigos";
             this.btnArtigos.Size = new System.Drawing.Size(140, 60);
             this.btnArtigos.TabIndex = 11;
@@ -221,7 +221,7 @@
             this.btnInicio.BackColor = System.Drawing.Color.White;
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.Location = new System.Drawing.Point(2, 2);
-            this.btnInicio.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(140, 60);
             this.btnInicio.TabIndex = 10;
@@ -234,7 +234,7 @@
             this.buttonTiposArtigo.BackColor = System.Drawing.Color.White;
             this.buttonTiposArtigo.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTiposArtigo.Location = new System.Drawing.Point(2, 67);
-            this.buttonTiposArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTiposArtigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonTiposArtigo.Name = "buttonTiposArtigo";
             this.buttonTiposArtigo.Size = new System.Drawing.Size(140, 60);
             this.buttonTiposArtigo.TabIndex = 9;
@@ -246,14 +246,102 @@
             // 
             this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(547, 371);
+            this.btnLimpar.Location = new System.Drawing.Point(544, 374);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(140, 60);
-            this.btnLimpar.TabIndex = 30;
+            this.btnLimpar.TabIndex = 29;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.BackColor = System.Drawing.Color.White;
+            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.Location = new System.Drawing.Point(362, 374);
+            this.btnApagar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(140, 60);
+            this.btnApagar.TabIndex = 28;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = false;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.White;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Location = new System.Drawing.Point(185, 374);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(140, 60);
+            this.btnEditar.TabIndex = 27;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.BackColor = System.Drawing.Color.White;
+            this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Location = new System.Drawing.Point(13, 374);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(140, 60);
+            this.btnAdicionar.TabIndex = 26;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(498, 293);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 21);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Ano";
+            // 
+            // txtAno
+            // 
+            this.txtAno.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAno.Location = new System.Drawing.Point(502, 316);
+            this.txtAno.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAno.Name = "txtAno";
+            this.txtAno.Size = new System.Drawing.Size(183, 28);
+            this.txtAno.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(250, 293);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 21);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Mes";
+            // 
+            // txtMes
+            // 
+            this.txtMes.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMes.Location = new System.Drawing.Point(253, 316);
+            this.txtMes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMes.Name = "txtMes";
+            this.txtMes.Size = new System.Drawing.Size(183, 28);
+            this.txtMes.TabIndex = 22;
+            // 
+            // txtMontante
+            // 
+            this.txtMontante.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontante.Location = new System.Drawing.Point(13, 316);
+            this.txtMontante.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMontante.Name = "txtMontante";
+            this.txtMontante.Size = new System.Drawing.Size(183, 28);
+            this.txtMontante.TabIndex = 21;
             // 
             // dgvOrcamentos
             // 
@@ -274,9 +362,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOrcamentos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvOrcamentos.Location = new System.Drawing.Point(16, 17);
+            this.dgvOrcamentos.Location = new System.Drawing.Point(13, 20);
             this.dgvOrcamentos.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvOrcamentos.MultiSelect = false;
             this.dgvOrcamentos.Name = "dgvOrcamentos";
             this.dgvOrcamentos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -289,109 +376,20 @@
             this.dgvOrcamentos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOrcamentos.RowHeadersWidth = 82;
             this.dgvOrcamentos.RowTemplate.Height = 33;
-            this.dgvOrcamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrcamentos.Size = new System.Drawing.Size(671, 259);
             this.dgvOrcamentos.TabIndex = 20;
             this.dgvOrcamentos.SelectionChanged += new System.EventHandler(this.dgvOrcamentos_SelectionChanged);
-            // 
-            // btnApagar
-            // 
-            this.btnApagar.BackColor = System.Drawing.Color.White;
-            this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApagar.Location = new System.Drawing.Point(365, 371);
-            this.btnApagar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnApagar.Name = "btnApagar";
-            this.btnApagar.Size = new System.Drawing.Size(140, 60);
-            this.btnApagar.TabIndex = 29;
-            this.btnApagar.Text = "Apagar";
-            this.btnApagar.UseVisualStyleBackColor = false;
-            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
-            // 
-            // txtMontante
-            // 
-            this.txtMontante.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMontante.Location = new System.Drawing.Point(16, 313);
-            this.txtMontante.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMontante.Name = "txtMontante";
-            this.txtMontante.Size = new System.Drawing.Size(183, 28);
-            this.txtMontante.TabIndex = 21;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.White;
-            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(188, 371);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(140, 60);
-            this.btnEditar.TabIndex = 28;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 290);
+            this.label2.Location = new System.Drawing.Point(9, 293);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 21);
-            this.label2.TabIndex = 22;
+            this.label2.TabIndex = 30;
             this.label2.Text = "Montante";
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.White;
-            this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.Location = new System.Drawing.Point(16, 371);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(140, 60);
-            this.btnAdicionar.TabIndex = 27;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
-            // txtMes
-            // 
-            this.txtMes.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMes.Location = new System.Drawing.Point(256, 313);
-            this.txtMes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtMes.Name = "txtMes";
-            this.txtMes.Size = new System.Drawing.Size(183, 28);
-            this.txtMes.TabIndex = 23;
-            // 
-            // a
-            // 
-            this.a.AutoSize = true;
-            this.a.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.a.Location = new System.Drawing.Point(501, 290);
-            this.a.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.a.Name = "a";
-            this.a.Size = new System.Drawing.Size(38, 21);
-            this.a.TabIndex = 26;
-            this.a.Text = "Ano";
-            // 
-            // l
-            // 
-            this.l.AutoSize = true;
-            this.l.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l.Location = new System.Drawing.Point(253, 290);
-            this.l.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.l.Name = "l";
-            this.l.Size = new System.Drawing.Size(107, 21);
-            this.l.TabIndex = 24;
-            this.l.Text = "Mês(Número)";
-            // 
-            // txtAno
-            // 
-            this.txtAno.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAno.Location = new System.Drawing.Point(505, 313);
-            this.txtAno.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAno.Name = "txtAno";
-            this.txtAno.Size = new System.Drawing.Size(183, 28);
-            this.txtAno.TabIndex = 25;
             // 
             // FormGestaoOrcamentos
             // 
@@ -400,7 +398,7 @@
             this.ClientSize = new System.Drawing.Size(876, 582);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormGestaoOrcamentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormGestaoOrcamentos";
@@ -431,15 +429,15 @@
         private System.Windows.Forms.Button btnEstatisticas;
         private System.Windows.Forms.Button btnUtilizadores;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.DataGridView dgvOrcamentos;
         private System.Windows.Forms.Button btnApagar;
-        private System.Windows.Forms.TextBox txtMontante;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.TextBox txtMes;
-        private System.Windows.Forms.Label a;
-        private System.Windows.Forms.Label l;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtAno;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMes;
+        private System.Windows.Forms.TextBox txtMontante;
+        private System.Windows.Forms.DataGridView dgvOrcamentos;
+        private System.Windows.Forms.Label label2;
     }
 }

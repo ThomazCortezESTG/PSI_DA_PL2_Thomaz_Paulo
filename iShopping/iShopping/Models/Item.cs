@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    [Serializable]
     public class Item
     {
         public int Id { get; set; }

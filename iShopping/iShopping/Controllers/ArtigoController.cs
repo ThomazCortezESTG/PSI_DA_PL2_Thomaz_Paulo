@@ -1,6 +1,7 @@
 ﻿using iShopping.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,15 @@ namespace iShopping.Controllers
             using (var db = new ShoppingContext())
             {
                 List<Artigo> artigos = db.Artigos.Include("Tipo").ToList();
+                return artigos;
+            }
+        }
+
+        public List<Artigo> getArtigosPorId(int id)
+        {
+            using (var db = new ShoppingContext())
+            {
+                List<Artigo> artigos = db.Artigos.Include("Tipo").ToList().FindAll(a => a.Tipo.Id == id);
                 return artigos;
             }
         }

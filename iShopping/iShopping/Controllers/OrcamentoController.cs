@@ -1,5 +1,6 @@
 ﻿using iShopping.Models;
 using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +18,23 @@ namespace iShopping.Controllers
                 return orcamentos;
             }
         }
-        public string criarOrcamento(float montante,int mes,int ano,Utilizador user)
+
+        public List<Orcamento> getOrcamentosDesteMes()
+        {
+            using (var db = new ShoppingContext())
+            {
+                List<Orcamento> orcamentos = db.Orcamentos.Include("CriadoPor").ToList().FindAll(o => o.Mes == DateTime.Now.Month && o.Ano == DateTime.Now.Year);
+                return orcamentos;
+            }
+        }
+
+        public string criarOrcamento(float montante, int mes, int ano, Utilizador user)
         {
             try
             {
                 using (var db = new ShoppingContext())
                 {
-                    Orcamento neworcameto = new Orcamento(montante,mes,ano,user);
+                    Orcamento neworcameto = new Orcamento(montante, mes, ano, user);
 
                     db.Orcamentos.Add(neworcameto);
                     db.SaveChanges();

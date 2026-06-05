@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace iShopping.Models
 {
-    [Serializable]
     public class Compra
     {
         public int Id { get; set; }
@@ -19,6 +18,7 @@ namespace iShopping.Models
         public Utilizador AlteradoPor { get; set; }
         public Utilizador FechadoPor { get; set; }
         public bool Fechada { get; set; } = false;
+        public List<Item_previsto> Itens { get; set; } = new List<Item_previsto>();
 
         public Compra() { }
 

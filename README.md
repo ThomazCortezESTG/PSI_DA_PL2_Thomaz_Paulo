@@ -11,8 +11,7 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 - Calcular o total das compras
 - Verificar se o orçamento foi ultrapassado
 - Gerar recibo
-- Ver o histórico de compras
-- Calcular estatisticas
+- Ver o histórico de compras da familia
 
 ---
 
@@ -20,5 +19,3 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 
 - Linguagem: C#
 - Interface: Windows forms
-
-![Logo do IPL.](ipllogo.png "Logo do IPL.")
