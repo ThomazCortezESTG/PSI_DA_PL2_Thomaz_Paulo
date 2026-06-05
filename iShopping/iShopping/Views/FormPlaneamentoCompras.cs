@@ -61,7 +61,7 @@ namespace iShopping.Views
             bool temSelecao = selectedId != -1;
             btnEditar.Enabled = temSelecao;
             btnApagar.Enabled = temSelecao;
-            btnExportar.Enabled = temSelecao;
+            btnIniciar.Enabled = temSelecao;
         }
 
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,12 +134,18 @@ namespace iShopping.Views
         private void btnEstatisticas_Click(object sender, EventArgs e) { new FormEstatisticas(User).Show(); this.Close(); }
         private void btnUtilizadores_Click(object sender, EventArgs e) { new FormGestaoUtilizadores(User).Show(); this.Close(); }
 
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            new FormModoCompra(selectedId).Show();
+        }
+
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            string resposta = _controller.exportarCompra(selectedId,User);
+            string resposta = _controller.exportarCompra(selectedId);
 
 
-            switch (resposta) {
+            switch (resposta)
+            {
                 case "1":
                     MessageBox.Show("Não é possível salvar porque a compra ainda náo esta fechada!", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);

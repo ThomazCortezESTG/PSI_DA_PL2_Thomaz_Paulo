@@ -19,7 +19,7 @@ namespace iShopping.Views
         private Compra Compra;
         private TipoController _tipoController = new TipoController();
         private ArtigoController _artigoController = new ArtigoController();
-        private CompraController _compraController = new CompraController();
+        private ItemController _itemController = new ItemController();
         private List<Item_previsto> _itens = new List<Item_previsto>();
         public FormCompraPlaneada(Utilizador user, Compra compra)
         {
@@ -50,8 +50,7 @@ namespace iShopping.Views
             if (cmbTipo.SelectedIndex == -1 || cmbTipo.SelectedValue == null) return;
 
             int tipoId = (int)cmbTipo.SelectedValue;
-            var artigos = _artigoController.getArtigos()
-                .FindAll(a => a.Tipo.Id == tipoId);
+            var artigos = _artigoController.getArtigosPorId(tipoId);
 
             cmbArtigo.DataSource = artigos;
             cmbArtigo.DisplayMember = "Nome";
@@ -180,9 +179,9 @@ namespace iShopping.Views
             string resultado;
 
             if (Compra == null)
-                resultado = _compraController.criarCompraComItens(txtNome.Text.Trim(), User, _itens);
+                resultado = _itemController.criarCompraComItens(txtNome.Text.Trim(), User, _itens);
             else
-                resultado = _compraController.editarCompraComItens(Compra.Id, txtNome.Text.Trim(), User, _itens);
+                resultado = _itemController.editarCompraComItens(Compra.Id, txtNome.Text.Trim(), User, _itens);
 
             if (resultado == "3")
             {

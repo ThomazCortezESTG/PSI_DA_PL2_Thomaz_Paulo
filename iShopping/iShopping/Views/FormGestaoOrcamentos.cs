@@ -26,7 +26,6 @@ namespace iShopping.Views
             AtualizarBotoes();
             CarregarOrcamentos();
         }
-
         private void CarregarOrcamentos()
         {
             dgvOrcamentos.DataSource = null;
@@ -76,9 +75,14 @@ namespace iShopping.Views
                 MessageBox.Show("Escreva o mes de forma certa e estar entre 1 a 12", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!int.TryParse(txtAno.Text.Trim(), out int ano))
+            if (!int.TryParse(txtAno.Text.Trim(), out int ano) || ano<DateTime.Now.Year)
             {
-                MessageBox.Show("Escreva o monstante de forma certa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Escreva o ano de {DateTime.Now.Year} para a frente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if ( ano == DateTime.Now.Year && mes<DateTime.Now.Month)
+            {
+                MessageBox.Show($"Escreva o mes de {DateTime.Now.Month} para a frente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -140,7 +144,7 @@ namespace iShopping.Views
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos()) 
+            if (!ValidarCampos())
             {
                 return;
             }
@@ -149,8 +153,8 @@ namespace iShopping.Views
             int mes = int.Parse(txtMes.Text);
             int ano = int.Parse(txtAno.Text);
 
-            string resposta = _controller.criarOrcamento(montante,mes,ano,User);
-            switch (resposta) 
+            string resposta = _controller.criarOrcamento(montante, mes, ano, User);
+            switch (resposta)
             {
                 case "1":
                     MessageBox.Show("Erro ao criar orçamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -161,26 +165,6 @@ namespace iShopping.Views
             }
             LimparCampos();
             CarregarOrcamentos();
-
-        }
-
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            txtMontante.Clear();
-            txtMes.Clear();
-            txtAno.Clear();
-        }
-
-        private void dgvOrcamentos_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvOrcamentos.SelectedRows.Count == 0) return;
-
-            var row = dgvOrcamentos.SelectedRows[0];
-            selectedId = (int)row.Cells["Id"].Value;
-            txtMontante.Text = row.Cells["Montante"].Value?.ToString();
-            txtAno.Text = row.Cells["Ano"].Value?.ToString();
-            txtMes.Text = row.Cells["Mes"].Value?.ToString();
-            AtualizarBotoes();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -193,7 +177,7 @@ namespace iShopping.Views
             int mes = int.Parse(txtMes.Text);
             int ano = int.Parse(txtAno.Text);
 
-            string resposta = _controller.editarOrcamento(selectedId,montante, mes, ano, User);
+            string resposta = _controller.editarOrcamento(selectedId, montante, mes, ano, User);
             switch (resposta)
             {
                 case "1":
@@ -209,7 +193,6 @@ namespace iShopping.Views
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
-
             var confirm = MessageBox.Show("Tens a certeza que queres apagar este Orcçamento?",
                 "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -226,6 +209,24 @@ namespace iShopping.Views
                     CarregarOrcamentos();
                 }
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        private void dgvOrcamentos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvOrcamentos.SelectedRows.Count == 0) return;
+
+            var row = dgvOrcamentos.SelectedRows[0];
+            selectedId = (int)row.Cells["Id"].Value;
+            txtMontante.Text = row.Cells["Montante"].Value?.ToString();
+            txtAno.Text = row.Cells["Ano"].Value?.ToString();
+            txtMes.Text = row.Cells["Mes"].Value?.ToString();
+            AtualizarBotoes();
+
         }
     }
 }
