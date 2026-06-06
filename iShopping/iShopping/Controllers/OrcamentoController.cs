@@ -1,30 +1,37 @@
 ﻿using iShopping.Models;
 using System;
-using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace iShopping.Controllers
 {
     internal class OrcamentoController
     {
+        // Códigos de retorno padronizados:
+        // "1" = não encontrado
+        // "2" = erro
+        // "3" = sucesso
+        // "4" = regra de negócio (ex: já existe para esse mês)
+
         public List<Orcamento> getOrcamentos()
         {
             using (var db = new ShoppingContext())
             {
-                List<Orcamento> orcamentos = db.Orcamentos.Include("CriadoPor").ToList();
-                return orcamentos;
+                return db.Orcamentos
+                    .Include("CriadoPor")
+                    .Include("AlteradoPor")
+                    .ToList();
             }
         }
 
-        public List<Orcamento> getOrcamentosDesteMes()
+        public Orcamento getOrcamentoDoMes(int mes, int ano)
         {
             using (var db = new ShoppingContext())
             {
-                List<Orcamento> orcamentos = db.Orcamentos.Include("CriadoPor").ToList().FindAll(o => o.Mes == DateTime.Now.Month && o.Ano == DateTime.Now.Year);
-                return orcamentos;
+                return db.Orcamentos
+                    .Include("CriadoPor")
+                    .FirstOrDefault(o => o.Mes == mes && o.Ano == ano);
             }
         }
 
@@ -34,18 +41,20 @@ namespace iShopping.Controllers
             {
                 using (var db = new ShoppingContext())
                 {
-                    Orcamento neworcameto = new Orcamento(montante, mes, ano, user);
+                    // Ponto 8 do enunciado: único orçamento mensal
+                    bool jaExiste = db.Orcamentos.Any(o => o.Mes == mes && o.Ano == ano);
+                    if (jaExiste) return "4";
 
-                    db.Orcamentos.Add(neworcameto);
+                    var userDb = db.Utilizadores.Find(user.Id);
+                    if (userDb == null) return "1";
+
+                    Orcamento novoOrcamento = new Orcamento(montante, mes, ano, userDb);
+                    db.Orcamentos.Add(novoOrcamento);
                     db.SaveChanges();
-
-                    return "2";//Sucesso
+                    return "3";
                 }
             }
-            catch
-            {
-                return "1";//Erro
-            }
+            catch { return "2"; }
         }
 
         public string editarOrcamento(int id, float montante, int mes, int ano, Utilizador user)
@@ -54,23 +63,30 @@ namespace iShopping.Controllers
             {
                 using (var db = new ShoppingContext())
                 {
+                    var orcamento = db.Orcamentos.Find(id);
+                    if (orcamento == null) return "1";
 
-                    var Orcameto = db.Orcamentos.Find(id);
-                    if (Orcameto == null) return "1";// Nao existe
+                    // Verifica se já existe outro orçamento para o mesmo mês/ano
+                    bool conflito = db.Orcamentos.Any(o => o.Mes == mes && o.Ano == ano && o.Id != id);
+                    if (conflito) return "4";
 
-                    Orcameto.Montante = montante;
-                    Orcameto.Mes = mes;
-                    Orcameto.Ano = ano;
-                    Orcameto.AlteradoPor = user;
-                    Orcameto.Ultima_alteracao = DateTime.Now;
+                    // Carrega o user dentro do contexto para evitar problemas de tracking
+                    var userDb = db.Utilizadores.Find(user.Id);
+                    if (userDb == null) return "1";
 
+                    orcamento.Montante = montante;
+                    orcamento.Mes = mes;
+                    orcamento.Ano = ano;
+                    orcamento.AlteradoPor = userDb;
+                    orcamento.Ultima_alteracao = DateTime.Now;
 
                     db.SaveChanges();
-                    return "3";// sucesso
+                    return "3";
                 }
             }
-            catch { return "2"; }// erro
+            catch { return "2"; }
         }
+
         public string apagarOrcamento(int id)
         {
             try
@@ -78,14 +94,14 @@ namespace iShopping.Controllers
                 using (var db = new ShoppingContext())
                 {
                     var orcamento = db.Orcamentos.Find(id);
-                    if (orcamento == null) return "1";//N existe
+                    if (orcamento == null) return "1";
 
                     db.Orcamentos.Remove(orcamento);
                     db.SaveChanges();
-                    return "3";//Sucesso
+                    return "3";
                 }
             }
-            catch { return "2"; }//Erro
+            catch { return "2"; }
         }
     }
 }
