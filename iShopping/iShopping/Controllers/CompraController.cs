@@ -89,9 +89,26 @@ namespace iShopping.Controllers
                 {
                     var compra = db.Compras.Find(id);
                     if (compra == null) return "1";
-                    if (compra.Fechada) return "4"; // já fechada
+                    if (compra.Fechada) return "4";
 
                     var utilizadorDb = db.Utilizadores.Find(utilizador.Id);
+
+                    // Calcula o total a partir dos itens guardados na BD
+                    var itensPrevistos = db.Itens
+                        .OfType<Item_previsto>()
+                        .Where(i => i.Compra.Id == id)
+                        .ToList();
+
+                    var itensNaoPrevistos = db.Itens
+                        .OfType<Item_nao_previsto>()
+                        .Where(i => i.Compra.Id == id)
+                        .ToList();
+
+                    float total = 0;
+                    total += itensPrevistos.Sum(i => i.Quantidade * i.Preco_unitario);
+                    total += itensNaoPrevistos.Sum(i => i.Quantidade * i.Preco_unitario);
+
+                    compra.Preco_total = total; // ← guarda o total correto
                     compra.fechar_compra(utilizadorDb);
                     compra.Fechada = true;
                     db.SaveChanges();
