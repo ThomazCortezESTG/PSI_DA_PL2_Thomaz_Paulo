@@ -1,13 +1,7 @@
 ﻿using iShopping.Controllers;
 using iShopping.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace iShopping.Views
@@ -16,7 +10,14 @@ namespace iShopping.Views
     {
         private OrcamentoController _controller = new OrcamentoController();
         private Utilizador User;
-        int selectedId = -1;
+        private int selectedId = -1;
+
+        private static readonly string[] NomesMeses = {
+            "", "Janeiro", "Fevereiro", "Março", "Abril",
+            "Maio", "Junho", "Julho", "Agosto",
+            "Setembro", "Outubro", "Novembro", "Dezembro"
+        };
+
         public FormGestaoOrcamentos(Utilizador user)
         {
             InitializeComponent();
@@ -26,16 +27,23 @@ namespace iShopping.Views
             AtualizarBotoes();
             CarregarOrcamentos();
         }
+
         private void CarregarOrcamentos()
         {
-            dgvOrcamentos.DataSource = null;
-            dgvOrcamentos.DataSource = _controller.getOrcamentos();
-            if (dgvOrcamentos.Columns["Id"] != null)
-                dgvOrcamentos.Columns["Id"].Visible = false;
-            if (dgvOrcamentos.Columns["Ultima_alteracao"] != null)
-                dgvOrcamentos.Columns["Ultima_alteracao"].Visible = false;
-            if (dgvOrcamentos.Columns["AlteradoPor"] != null)
-                dgvOrcamentos.Columns["AlteradoPor"].Visible = false;
+            var lista = _controller.getOrcamentos();
+
+            dgvOrcamentos.DataSource = lista.Select(o => new {
+                Id = o.Id,
+                Montante = o.Montante,
+                NumMes = o.Mes,                          // coluna oculta, usada na seleção
+                Mes = NomesMeses[o.Mes],              // nome do mês visível na grelha
+                Ano = o.Ano,
+                Criado_Por = o.CriadoPor?.Nome ?? "",
+                Alterado_Por = o.AlteradoPor?.Nome ?? ""
+            }).ToList();
+
+            if (dgvOrcamentos.Columns["Id"] != null) dgvOrcamentos.Columns["Id"].Visible = false;
+            if (dgvOrcamentos.Columns["NumMes"] != null) dgvOrcamentos.Columns["NumMes"].Visible = false;
         }
 
         private void AtualizarBotoes()
@@ -61,153 +69,119 @@ namespace iShopping.Views
                 string.IsNullOrWhiteSpace(txtAno.Text) ||
                 string.IsNullOrWhiteSpace(txtMes.Text))
             {
-                MessageBox.Show("Preenche todos os campos!", "Aviso",
+                MessageBox.Show("Preenche todos os campos.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            if (!float.TryParse(txtMontante.Text.Trim(), out float montante))
+
+            if (!float.TryParse(txtMontante.Text.Trim(), out float montante) || montante <= 0)
             {
-                MessageBox.Show("Escreva o montante de forma certa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O montante tem de ser um valor maior que zero.", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             if (!int.TryParse(txtMes.Text.Trim(), out int mes) || mes < 1 || mes > 12)
             {
-                MessageBox.Show("Escreva o mes de forma certa e estar entre 1 a 12", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O mês tem de ser um número entre 1 e 12.", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!int.TryParse(txtAno.Text.Trim(), out int ano) || ano<DateTime.Now.Year)
+
+            if (!int.TryParse(txtAno.Text.Trim(), out int ano) || ano < 2000)
             {
-                MessageBox.Show($"Escreva o ano de {DateTime.Now.Year} para a frente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O ano tem de ser 2000 ou superior.", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if ( ano == DateTime.Now.Year && mes<DateTime.Now.Month)
-            {
-                MessageBox.Show($"Escreva o mes de {DateTime.Now.Month} para a frente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+
             return true;
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            Logout();
-        }
-
-        private void buttonTiposArtigo_Click(object sender, EventArgs e)
-        {
-            FormGestaoTiposArtigo form = new FormGestaoTiposArtigo(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnArtigos_Click(object sender, EventArgs e)
-        {
-            FormGestaoArtigos form = new FormGestaoArtigos(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnOrcamentos_Click(object sender, EventArgs e)
-        {
-            FormGestaoOrcamentos form = new FormGestaoOrcamentos(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnCompras_Click(object sender, EventArgs e)
-        {
-            FormPlaneamentoCompras form = new FormPlaneamentoCompras(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnEstatisticas_Click(object sender, EventArgs e)
-        {
-            FormEstatisticas form = new FormEstatisticas(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnUtilizadores_Click(object sender, EventArgs e)
-        {
-            FormGestaoUtilizadores form = new FormGestaoUtilizadores(User);
-            form.Show();
-            this.Close();
-        }
-
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
-            FormMain form = new FormMain(User);
-            form.Show();
-            this.Close();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos())
-            {
-                return;
-            }
+            if (!ValidarCampos()) return;
 
-            float montante = float.Parse(txtMontante.Text);
-            int mes = int.Parse(txtMes.Text);
-            int ano = int.Parse(txtAno.Text);
+            float montante = float.Parse(txtMontante.Text.Trim());
+            int mes = int.Parse(txtMes.Text.Trim());
+            int ano = int.Parse(txtAno.Text.Trim());
 
             string resposta = _controller.criarOrcamento(montante, mes, ano, User);
             switch (resposta)
             {
-                case "1":
-                    MessageBox.Show("Erro ao criar orçamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case "3":
+                    MessageBox.Show("Orçamento criado com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                    CarregarOrcamentos();
                     break;
-                case "2":
-                    MessageBox.Show("Orçamento criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                case "4":
+                    MessageBox.Show($"Já existe um orçamento para {NomesMeses[mes]} de {ano}.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                default:
+                    MessageBox.Show("Erro ao criar orçamento.", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-            LimparCampos();
-            CarregarOrcamentos();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos())
-            {
-                return;
-            }
-            float montante = float.Parse(txtMontante.Text);
-            int mes = int.Parse(txtMes.Text);
-            int ano = int.Parse(txtAno.Text);
+            if (!ValidarCampos()) return;
+
+            float montante = float.Parse(txtMontante.Text.Trim());
+            int mes = int.Parse(txtMes.Text.Trim());
+            int ano = int.Parse(txtAno.Text.Trim());
 
             string resposta = _controller.editarOrcamento(selectedId, montante, mes, ano, User);
             switch (resposta)
             {
-                case "1":
-                    MessageBox.Show("Erro ao criar orçamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case "3":
+                    MessageBox.Show("Orçamento editado com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                    CarregarOrcamentos();
                     break;
-                case "2":
-                    MessageBox.Show("Orçamento criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                case "4":
+                    MessageBox.Show($"Já existe um orçamento para {NomesMeses[mes]} de {ano}.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case "1":
+                    MessageBox.Show("Orçamento não encontrado.", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                default:
+                    MessageBox.Show("Erro ao editar orçamento.", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-            LimparCampos();
-            CarregarOrcamentos();
         }
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Tens a certeza que queres apagar este Orcçamento?",
+            var confirm = MessageBox.Show("Tens a certeza que queres apagar este orçamento?",
                 "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (confirm == DialogResult.Yes)
-            {
-                string resultado = _controller.apagarOrcamento(selectedId);
+            if (confirm != DialogResult.Yes) return;
 
-                if (resultado == "2")
-                    MessageBox.Show("Erro ao apagar o orçamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                {
-                    MessageBox.Show("Orçamento apagado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string resultado = _controller.apagarOrcamento(selectedId);
+            switch (resultado)
+            {
+                case "3":
+                    MessageBox.Show("Orçamento apagado com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
                     CarregarOrcamentos();
-                }
+                    break;
+                case "1":
+                    MessageBox.Show("Orçamento não encontrado.", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                default:
+                    MessageBox.Show("Erro ao apagar orçamento.", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
         }
 
@@ -224,9 +198,18 @@ namespace iShopping.Views
             selectedId = (int)row.Cells["Id"].Value;
             txtMontante.Text = row.Cells["Montante"].Value?.ToString();
             txtAno.Text = row.Cells["Ano"].Value?.ToString();
-            txtMes.Text = row.Cells["Mes"].Value?.ToString();
+            txtMes.Text = row.Cells["NumMes"].Value?.ToString(); // número, não o nome
             AtualizarBotoes();
-
         }
+
+        // Navegação
+        private void btnLogout_Click(object sender, EventArgs e) { Logout(); }
+        private void btnInicio_Click(object sender, EventArgs e) { new FormMain(User).Show(); this.Close(); }
+        private void buttonTiposArtigo_Click(object sender, EventArgs e) { new FormGestaoTiposArtigo(User).Show(); this.Close(); }
+        private void btnArtigos_Click(object sender, EventArgs e) { new FormGestaoArtigos(User).Show(); this.Close(); }
+        private void btnOrcamentos_Click(object sender, EventArgs e) { new FormGestaoOrcamentos(User).Show(); this.Close(); }
+        private void btnCompras_Click(object sender, EventArgs e) { new FormPlaneamentoCompras(User).Show(); this.Close(); }
+        private void btnEstatisticas_Click(object sender, EventArgs e) { new FormEstatisticas(User).Show(); this.Close(); }
+        private void btnUtilizadores_Click(object sender, EventArgs e) { new FormGestaoUtilizadores(User).Show(); this.Close(); }
     }
 }
