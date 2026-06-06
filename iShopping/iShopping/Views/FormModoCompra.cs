@@ -27,15 +27,24 @@ namespace iShopping.Views
         private List<Item_nao_previsto> _itens_nao_previstos = new List<Item_nao_previsto>();
         private int selectedId = -1;
         private int form = 0; // 1 - lista dos previstos 2 - lista de nao previstos
-        public FormModoCompra(int compraId)
+        private OrcamentoController _orcamentoController = new OrcamentoController();
+        private float _orcamentoMes = 0;
+        public FormModoCompra(int compraId, Utilizador utilizador)
         {
             InitializeComponent();
+            User = utilizador;
             Compra = _compraController.getCompraPorId(compraId);
             preco_total_antigo = Compra.Preco_total;
             preco_total = Compra.Preco_total;
+
+            // Carrega orçamento do mês atual
+            var orcamento = _orcamentoController.getOrcamentoDoMes(DateTime.Now.Month, DateTime.Now.Year);
+            _orcamentoMes = orcamento?.Montante ?? 0;
+
             PreencherDados();
             CarregarTipos();
-            lblTotal.Text = $"Total : {preco_total}€";
+            lblTotal.Text = $"Total: {preco_total:F2}€";
+            AtualizarOrcamento(); // label do orçamento
         }
 
         private void CarregarTipos()
@@ -202,6 +211,7 @@ namespace iShopping.Views
             }
             preco_total = total;
             lblTotal.Text = $"Total : {preco_total}€";
+            AtualizarOrcamento();
         }
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,6 +311,32 @@ namespace iShopping.Views
 
             AtualizarGrelha();
             reset();
+        }
+
+        private void AtualizarOrcamento()
+        {
+            float disponivel = _orcamentoMes - preco_total;
+            lblOrcamento.Text = $"Orçamento disponível: {disponivel:F2}€";
+
+            if (_orcamentoMes == 0)
+            {
+                lblOrcamento.Text = "Sem orçamento definido para este mês.";
+                lblOrcamento.ForeColor = Color.Gray;
+                return;
+            }
+
+            if (disponivel < 0)
+            {
+                lblOrcamento.ForeColor = Color.Red;
+                lblOrcamento.Font = new Font(lblOrcamento.Font, FontStyle.Bold);
+                MessageBox.Show("⚠️ Atenção: Orçamento ultrapassado!", "Orçamento Excedido",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                lblOrcamento.ForeColor = Color.Green;
+                lblOrcamento.Font = new Font(lblOrcamento.Font, FontStyle.Regular);
+            }
         }
     }
 }

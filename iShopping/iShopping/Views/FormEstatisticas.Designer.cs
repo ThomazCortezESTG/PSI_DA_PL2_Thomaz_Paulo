@@ -40,10 +40,35 @@
             this.btnArtigos = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.buttonTiposArtigo = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grpComprasFechadas = new System.Windows.Forms.GroupBox();
+            this.dgvComprasFechadas = new System.Windows.Forms.DataGridView();
+            this.grpOrcamento = new System.Windows.Forms.GroupBox();
+            this.dgvOrcamentoMes = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grpSugestaoLista = new System.Windows.Forms.GroupBox();
+            this.btnGerarLista = new System.Windows.Forms.Button();
+            this.lblSemanaAtual = new System.Windows.Forms.Label();
+            this.dgvSugestaoLista = new System.Windows.Forms.DataGridView();
+            this.grpSugestaoOrcamento = new System.Windows.Forms.GroupBox();
+            this.lblResultadoOrcamento = new System.Windows.Forms.Label();
+            this.btnGerarOrcamento = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.grpComprasFechadas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComprasFechadas)).BeginInit();
+            this.grpOrcamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrcamentoMes)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.grpSugestaoLista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSugestaoLista)).BeginInit();
+            this.grpSugestaoOrcamento.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -110,6 +135,10 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnArtigos);
             this.splitContainer1.Panel1.Controls.Add(this.btnInicio);
             this.splitContainer1.Panel1.Controls.Add(this.buttonTiposArtigo);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(1144, 574);
             this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 1;
@@ -199,6 +228,165 @@
             this.buttonTiposArtigo.UseVisualStyleBackColor = false;
             this.buttonTiposArtigo.Click += new System.EventHandler(this.buttonTiposArtigo_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(925, 561);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.grpComprasFechadas);
+            this.tabPage1.Controls.Add(this.grpOrcamento);
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(909, 514);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Estatísticas";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grpComprasFechadas
+            // 
+            this.grpComprasFechadas.Controls.Add(this.dgvComprasFechadas);
+            this.grpComprasFechadas.Location = new System.Drawing.Point(6, 270);
+            this.grpComprasFechadas.Name = "grpComprasFechadas";
+            this.grpComprasFechadas.Size = new System.Drawing.Size(886, 244);
+            this.grpComprasFechadas.TabIndex = 1;
+            this.grpComprasFechadas.TabStop = false;
+            this.grpComprasFechadas.Text = "Compras Fechadas - Artigos Previstos vs Não Previstos";
+            // 
+            // dgvComprasFechadas
+            // 
+            this.dgvComprasFechadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvComprasFechadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvComprasFechadas.Location = new System.Drawing.Point(6, 29);
+            this.dgvComprasFechadas.Name = "dgvComprasFechadas";
+            this.dgvComprasFechadas.ReadOnly = true;
+            this.dgvComprasFechadas.RowHeadersWidth = 82;
+            this.dgvComprasFechadas.RowTemplate.Height = 33;
+            this.dgvComprasFechadas.Size = new System.Drawing.Size(874, 212);
+            this.dgvComprasFechadas.TabIndex = 1;
+            // 
+            // grpOrcamento
+            // 
+            this.grpOrcamento.Controls.Add(this.dgvOrcamentoMes);
+            this.grpOrcamento.Location = new System.Drawing.Point(6, 6);
+            this.grpOrcamento.Name = "grpOrcamento";
+            this.grpOrcamento.Size = new System.Drawing.Size(886, 255);
+            this.grpOrcamento.TabIndex = 0;
+            this.grpOrcamento.TabStop = false;
+            this.grpOrcamento.Text = "Orçamento vs Total de Compras por Mês";
+            // 
+            // dgvOrcamentoMes
+            // 
+            this.dgvOrcamentoMes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrcamentoMes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrcamentoMes.Location = new System.Drawing.Point(6, 34);
+            this.dgvOrcamentoMes.Name = "dgvOrcamentoMes";
+            this.dgvOrcamentoMes.ReadOnly = true;
+            this.dgvOrcamentoMes.RowHeadersWidth = 82;
+            this.dgvOrcamentoMes.RowTemplate.Height = 33;
+            this.dgvOrcamentoMes.Size = new System.Drawing.Size(874, 215);
+            this.dgvOrcamentoMes.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.grpSugestaoLista);
+            this.tabPage2.Controls.Add(this.grpSugestaoOrcamento);
+            this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(909, 514);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Apoio à Decisão";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // grpSugestaoLista
+            // 
+            this.grpSugestaoLista.Controls.Add(this.btnGerarLista);
+            this.grpSugestaoLista.Controls.Add(this.lblSemanaAtual);
+            this.grpSugestaoLista.Controls.Add(this.dgvSugestaoLista);
+            this.grpSugestaoLista.Location = new System.Drawing.Point(6, 168);
+            this.grpSugestaoLista.Name = "grpSugestaoLista";
+            this.grpSugestaoLista.Size = new System.Drawing.Size(886, 340);
+            this.grpSugestaoLista.TabIndex = 2;
+            this.grpSugestaoLista.TabStop = false;
+            this.grpSugestaoLista.Text = "Sugestão de Lista de Compras";
+            // 
+            // btnGerarLista
+            // 
+            this.btnGerarLista.BackColor = System.Drawing.Color.White;
+            this.btnGerarLista.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarLista.Location = new System.Drawing.Point(683, 34);
+            this.btnGerarLista.Name = "btnGerarLista";
+            this.btnGerarLista.Size = new System.Drawing.Size(187, 75);
+            this.btnGerarLista.TabIndex = 18;
+            this.btnGerarLista.Text = "Gerar Sugestão";
+            this.btnGerarLista.UseVisualStyleBackColor = false;
+            this.btnGerarLista.Click += new System.EventHandler(this.btnGerarLista_Click);
+            // 
+            // lblSemanaAtual
+            // 
+            this.lblSemanaAtual.AutoSize = true;
+            this.lblSemanaAtual.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemanaAtual.Location = new System.Drawing.Point(6, 46);
+            this.lblSemanaAtual.Name = "lblSemanaAtual";
+            this.lblSemanaAtual.Size = new System.Drawing.Size(322, 37);
+            this.lblSemanaAtual.TabIndex = 17;
+            this.lblSemanaAtual.Text = "Semana atual do mês: X";
+            // 
+            // dgvSugestaoLista
+            // 
+            this.dgvSugestaoLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSugestaoLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSugestaoLista.Location = new System.Drawing.Point(6, 117);
+            this.dgvSugestaoLista.Name = "dgvSugestaoLista";
+            this.dgvSugestaoLista.ReadOnly = true;
+            this.dgvSugestaoLista.RowHeadersWidth = 82;
+            this.dgvSugestaoLista.RowTemplate.Height = 33;
+            this.dgvSugestaoLista.Size = new System.Drawing.Size(874, 212);
+            this.dgvSugestaoLista.TabIndex = 1;
+            // 
+            // grpSugestaoOrcamento
+            // 
+            this.grpSugestaoOrcamento.Controls.Add(this.lblResultadoOrcamento);
+            this.grpSugestaoOrcamento.Controls.Add(this.btnGerarOrcamento);
+            this.grpSugestaoOrcamento.Location = new System.Drawing.Point(3, 6);
+            this.grpSugestaoOrcamento.Name = "grpSugestaoOrcamento";
+            this.grpSugestaoOrcamento.Size = new System.Drawing.Size(886, 156);
+            this.grpSugestaoOrcamento.TabIndex = 1;
+            this.grpSugestaoOrcamento.TabStop = false;
+            this.grpSugestaoOrcamento.Text = "Sugestão de Orçamento para o Próximo Mês";
+            // 
+            // lblResultadoOrcamento
+            // 
+            this.lblResultadoOrcamento.AutoSize = true;
+            this.lblResultadoOrcamento.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblResultadoOrcamento.Location = new System.Drawing.Point(207, 75);
+            this.lblResultadoOrcamento.Name = "lblResultadoOrcamento";
+            this.lblResultadoOrcamento.Size = new System.Drawing.Size(309, 30);
+            this.lblResultadoOrcamento.TabIndex = 17;
+            this.lblResultadoOrcamento.Text = "(clica Gerar para ver a sugestão)";
+            // 
+            // btnGerarOrcamento
+            // 
+            this.btnGerarOrcamento.BackColor = System.Drawing.Color.White;
+            this.btnGerarOrcamento.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarOrcamento.Location = new System.Drawing.Point(14, 53);
+            this.btnGerarOrcamento.Name = "btnGerarOrcamento";
+            this.btnGerarOrcamento.Size = new System.Drawing.Size(187, 75);
+            this.btnGerarOrcamento.TabIndex = 16;
+            this.btnGerarOrcamento.Text = "Gerar Sugestão";
+            this.btnGerarOrcamento.UseVisualStyleBackColor = false;
+            this.btnGerarOrcamento.Click += new System.EventHandler(this.btnGerarOrcamento_Click);
+            // 
             // FormEstatisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -212,8 +400,21 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.grpComprasFechadas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComprasFechadas)).EndInit();
+            this.grpOrcamento.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrcamentoMes)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.grpSugestaoLista.ResumeLayout(false);
+            this.grpSugestaoLista.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSugestaoLista)).EndInit();
+            this.grpSugestaoOrcamento.ResumeLayout(false);
+            this.grpSugestaoOrcamento.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +433,19 @@
         private System.Windows.Forms.Button btnArtigos;
         private System.Windows.Forms.Button btnEstatisticas;
         private System.Windows.Forms.Button btnUtilizadores;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox grpOrcamento;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox grpComprasFechadas;
+        private System.Windows.Forms.DataGridView dgvOrcamentoMes;
+        private System.Windows.Forms.DataGridView dgvComprasFechadas;
+        private System.Windows.Forms.GroupBox grpSugestaoLista;
+        private System.Windows.Forms.DataGridView dgvSugestaoLista;
+        private System.Windows.Forms.GroupBox grpSugestaoOrcamento;
+        private System.Windows.Forms.Button btnGerarOrcamento;
+        private System.Windows.Forms.Label lblSemanaAtual;
+        private System.Windows.Forms.Label lblResultadoOrcamento;
+        private System.Windows.Forms.Button btnGerarLista;
     }
 }
