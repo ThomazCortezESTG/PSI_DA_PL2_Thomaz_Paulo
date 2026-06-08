@@ -11,6 +11,7 @@ namespace iShopping.Views
     {
         private Utilizador User;
         private CompraController _controller = new CompraController();
+        private OrcamentoController _controller_orcamento = new OrcamentoController();
         private int selectedId = -1;
 
         public FormPlaneamentoCompras(Utilizador user)
@@ -49,7 +50,8 @@ namespace iShopping.Views
                 Nome = c.Descricao,
                 Data_Criacao = c.Data_criacao,
                 Fechada = c.Fechada,
-                Criado_Por = c.Utilizador?.Nome ?? ""
+                Criado_Por = c.Utilizador?.Nome ?? "",
+                Total = c.Preco_total
             }).ToList();
 
             selectedId = -1;
@@ -106,6 +108,7 @@ namespace iShopping.Views
 
             if (confirm == DialogResult.Yes)
             {
+                _controller_orcamento.ReporOrcamentoDoMes(_controller.getTotalCompra(selectedId));
                 string resultado = _controller.apagarCompra(selectedId);
 
                 if (resultado == "4")
@@ -136,7 +139,20 @@ namespace iShopping.Views
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            new FormModoCompra(selectedId, User).Show();
+            var compra = _controller.getCompraPorId(selectedId);
+
+            if (compra.Fechada)
+            {
+                MessageBox.Show("Esta compra está fechada e não pode ser editada!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (_controller_orcamento.getOrcamentoDoMes(DateTime.Now.Month, DateTime.Now.Year) == null) {
+                MessageBox.Show("Não existe um orçamento para este mês!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            new FormModoCompra(selectedId, User).ShowDialog();
             CarregarCompras(); // atualiza lista depois de voltar
         }
 
@@ -194,9 +210,9 @@ namespace iShopping.Views
                 case "3":
                     MessageBox.Show("Compra fechada com sucesso!", "Sucesso",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    selectedId = -1;        // ← limpa seleção
-                    CarregarCompras();      // ← atualiza lista
-                    AtualizarBotoes();      // ← desativa botões
+                    selectedId = -1;
+                    CarregarCompras();
+                    AtualizarBotoes();
                     break;
                 case "4":
                     MessageBox.Show("A compra já estava fechada.", "Aviso",

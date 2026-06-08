@@ -103,5 +103,31 @@ namespace iShopping.Controllers
             }
             catch { return "2"; }
         }
+
+        public void TirarOrcamentoDoMes(float total)
+        {
+            var orcamento = getOrcamentoDoMes(DateTime.Now.Month, DateTime.Now.Year);
+            if (orcamento == null) return;
+
+            using (var db = new ShoppingContext())
+            {
+                db.Orcamentos.Attach(orcamento);
+                orcamento.Montante -= total;
+                db.SaveChanges();
+            }
+        }
+
+        public void ReporOrcamentoDoMes(float total)
+        {
+            var orcamento = getOrcamentoDoMes(DateTime.Now.Month, DateTime.Now.Year);
+            if (orcamento == null) return;
+
+            using (var db = new ShoppingContext())
+            {
+                db.Orcamentos.Attach(orcamento);
+                orcamento.Montante += total;
+                db.SaveChanges();
+            }
+        }
     }
 }
