@@ -32,6 +32,20 @@ namespace iShopping.Controllers
             }
         }
 
+        public float getTotalCompra(int id)
+        {
+            using (var db = new ShoppingContext())
+            {
+                var compra = db.Compras
+                    .FirstOrDefault(c => c.Id == id && !c.Fechada);
+
+                if (compra == null)
+                    return 0;
+
+                return compra.Preco_total;
+            }
+        }
+
         public List<Compra> getComprasPorEstado(bool fechada)
         {
             using (var db = new ShoppingContext())
@@ -40,6 +54,17 @@ namespace iShopping.Controllers
                     .Include("Utilizador")
                     .Where(c => c.Fechada == fechada)
                     .ToList();
+            }
+        }
+
+        public void meterPreco(int compraId, float preco) {
+            using (var db = new ShoppingContext())
+            {
+                var compra = db.Compras.Find(compraId);
+                if (compra == null) return;
+
+                compra.Preco_total = preco;
+                db.SaveChanges();
             }
         }
 

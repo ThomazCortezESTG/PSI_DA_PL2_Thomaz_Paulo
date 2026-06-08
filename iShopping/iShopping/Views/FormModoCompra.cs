@@ -29,6 +29,7 @@ namespace iShopping.Views
         private int form = 0; // 1 - lista dos previstos 2 - lista de nao previstos
         private OrcamentoController _orcamentoController = new OrcamentoController();
         private float _orcamentoMes = 0;
+        private float disponivel = 0;
         public FormModoCompra(int compraId, Utilizador utilizador)
         {
             InitializeComponent();
@@ -115,7 +116,14 @@ namespace iShopping.Views
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (disponivel < 0)
+            {
+                MessageBox.Show("Não é possivel guardar a compra por ultrapassar o montante disponivel do orçamento!", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string resposta = _itemController.guardarCompra(Compra.Id, _itens, _itens_nao_previstos);
+            
             switch (resposta) {
                 case "1":
                     MessageBox.Show("Erro ao guardar compra!", "Erro",
@@ -128,10 +136,24 @@ namespace iShopping.Views
                 case "3":
                     MessageBox.Show("Compra guardada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    atualizarOrcamento();
                     this.Close();
                     break;
             }
 
+        }
+
+        private void atualizarOrcamento() {
+            if (preco_total > preco_total_antigo)
+            {
+                float retirar = preco_total - preco_total_antigo;
+                _orcamentoController.TirarOrcamentoDoMes(retirar);
+            }
+            else {
+                float repor = preco_total_antigo - preco_total;
+                _orcamentoController.ReporOrcamentoDoMes(repor);
+            }
+                
         }
 
         private void PreencherDados()
@@ -160,7 +182,10 @@ namespace iShopping.Views
         {
             if (dgvItensNaoPrevistos.SelectedRows.Count == 0) return;
 
-            if (form != 2) return;
+            if (form != 2) {
+                MessageBox.Show("Não pode apagar os artigos de uma lista previstas no modo de compra","Erro");
+                return;
+            }
 
             int index = dgvItensNaoPrevistos.SelectedRows[0].Index;
             _itens_nao_previstos.RemoveAt(index);
@@ -226,19 +251,8 @@ namespace iShopping.Views
 
         private void btnAdicionarItem_Click(object sender, EventArgs e)
         {
-            if (cmbArtigo.SelectedIndex == -1)
-            {
-                MessageBox.Show("Seleciona um artigo!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (ver_input() != "3")
                 return;
-            }
-
-            if (nudQuantidade.Value <= 0)
-            {
-                MessageBox.Show("A quantidade tem de ser maior que zero!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             var artigo = (Artigo)cmbArtigo.SelectedItem;
 
@@ -252,7 +266,7 @@ namespace iShopping.Views
 
             _itens_nao_previstos.Add(new Item_nao_previsto((int)nudQuantidade.Value, float.Parse(txtPreco.Text), artigo, null, ""));
             AtualizarGrelha();
-
+            reset();
             cmbTipo.SelectedIndex = -1;
             cmbArtigo.DataSource = null;
             nudQuantidade.Value = 1;
@@ -260,20 +274,15 @@ namespace iShopping.Views
 
         private void btnAlterarItem_Click(object sender, EventArgs e)
         {
-            if (!float.TryParse(txtPreco.Text, out float novoPreco) || novoPreco < 0)
-            {
-                MessageBox.Show("Preço inválido!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (verificar_orcamento() == "Adicionar") {
                 return;
             }
-
-            if (nudQuantidade.Value <= 0)
-            {
-                MessageBox.Show("A quantidade tem de ser maior que zero!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (ver_input() != "3")
                 return;
-            }
-
+            int index = dgvItensPrevistos.SelectedRows[0].Index;
+            var item = _itens[index];
+            item.Quantidade = (int)nudQuantidade.Value;
+            item.Preco_unitario = float.Parse(txtPreco.Text);
             if (form == 1)
             {
                 if (dgvItensPrevistos.SelectedRows.Count == 0)
@@ -282,11 +291,6 @@ namespace iShopping.Views
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                int index = dgvItensPrevistos.SelectedRows[0].Index;
-                var item = _itens[index];
-                item.Quantidade = (int)nudQuantidade.Value;
-                item.Preco_unitario = novoPreco;
             }
             else if (form == 2)
             {
@@ -296,11 +300,6 @@ namespace iShopping.Views
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                int index = dgvItensNaoPrevistos.SelectedRows[0].Index;
-                var item = _itens_nao_previstos[index];
-                item.Quantidade = (int)nudQuantidade.Value;
-                item.Preco_unitario = novoPreco;
             }
             else
             {
@@ -313,9 +312,49 @@ namespace iShopping.Views
             reset();
         }
 
+        private string ver_input() {
+            if (cmbArtigo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleciona um artigo!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return "1";
+            }
+            if (!float.TryParse(txtPreco.Text, out float novoPreco) || novoPreco < 0)
+            {
+                MessageBox.Show("Preço inválido!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return "2";
+            }
+
+            if (nudQuantidade.Value <= 0)
+            {
+                MessageBox.Show("A quantidade tem de ser maior que zero!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return "4";
+            }
+            return "3";
+        }
+
+        private string verificar_orcamento() {
+            if (disponivel < 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Tem certeza que quer adicionar este artigo que ultrapassa do orçamento?", "Limite do orçamento ultrapasaddo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    return "Adicionar";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            else { return ""; }
+                
+        }
+
         private void AtualizarOrcamento()
         {
-            float disponivel = _orcamentoMes - preco_total;
+            disponivel = _orcamentoMes - preco_total;
             lblOrcamento.Text = $"Orçamento disponível: {disponivel:F2}€";
 
             if (_orcamentoMes == 0)

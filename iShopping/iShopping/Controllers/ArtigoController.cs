@@ -28,7 +28,7 @@ namespace iShopping.Controllers
             }
         }
 
-        public string criarArtigo(string nome, string descricao, int tipo_selecionado)
+        public string criarArtigo(string nome, string descricao, Tipo_de_artigo tipo)
         {
             try
             {
@@ -39,14 +39,14 @@ namespace iShopping.Controllers
                     if (exists)
                         return "1"; // Ja existe
 
-                    Tipo_de_artigo tiposelecionado = db.Tipos_de_artigos.Where(ar => ar.Id == tipo_selecionado).Select(ar => ar).FirstOrDefault();
-                    if (tiposelecionado == null)
+                    
+                    if (tipo == null)
                     {
                         return "2";
                     }
 
 
-                    Artigo newArtigo = new Artigo(nome, descricao, tiposelecionado);
+                    Artigo newArtigo = new Artigo(nome, descricao, tipo);
 
                     db.Artigos.Add(newArtigo);
                     db.SaveChanges();
@@ -59,7 +59,7 @@ namespace iShopping.Controllers
                 return "2";
             }
         }
-        public string editarArtigo(int id, string nome, string descricao,int tipo_selecionado)
+        public string editarArtigo(int id, string nome, string descricao, Tipo_de_artigo tipo)
         {
             try
             {
@@ -69,15 +69,14 @@ namespace iShopping.Controllers
                     var Artigo = db.Artigos.Find(id);
                     if (Artigo == null) return "1";// Nao existe
 
-                    Tipo_de_artigo tiposelecionado = db.Tipos_de_artigos.Where(ar => ar.Id == tipo_selecionado).Select(ar => ar).FirstOrDefault();
-                    if (tiposelecionado == null)
+                    if (tipo == null)
                     {
                         return "2";
                     }
 
                     Artigo.Descricao = descricao;
                     Artigo.Nome = nome;
-                    Artigo.Tipo = tiposelecionado;
+                    Artigo.Tipo = tipo;
 
                     db.SaveChanges();
                     return "3";// sucesso

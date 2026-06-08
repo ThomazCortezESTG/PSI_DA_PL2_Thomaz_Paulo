@@ -37,15 +37,30 @@ namespace iShopping.Views
             CarregarTipos();
         }
 
+        private void CarregarTipos()
+        {
+            cmbTipo.SelectedIndexChanged -= cmbTipo_SelectedIndexChanged; // desliga evento
+            cmbTipo.DisplayMember = "Nome";
+            cmbTipo.ValueMember = "Id";
+            cmbTipo.DataSource = tipoController.getTipos();
+            cmbTipo.SelectedIndex = -1;
+            cmbTipo.SelectedIndexChanged += cmbTipo_SelectedIndexChanged; // volta a ligar
+        }
+
         private void btnComando_Click(object sender, EventArgs e)
         {
-            var row = dgvTipos.SelectedRows[0];
-            int id = (int)row.Cells["Id"].Value;
+            if(cmbTipo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleciona um artigo!", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             string nome = txtNome.Text.Trim();
             string descricao = txtDescricao.Text.Trim();
+            var tipo = (Tipo_de_artigo)cmbTipo.SelectedItem;
             if (artigo != null)
             {
-                string resposta = artigoController.editarArtigo(artigo.Id, nome, descricao,id);
+                string resposta = artigoController.editarArtigo(artigo.Id, nome, descricao,tipo);
 
                 switch (resposta)
                 {
@@ -63,7 +78,7 @@ namespace iShopping.Views
             }
             else
             {
-                string resposta = artigoController.criarArtigo(nome, descricao,id);
+                string resposta = artigoController.criarArtigo(nome, descricao, tipo);
                 switch (resposta)
                 {
                     case "1":
@@ -79,26 +94,9 @@ namespace iShopping.Views
             }
         }
 
-        private void CarregarTipos()
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvTipos.DataSource = null;
-            dgvTipos.DataSource = tipoController.getTipos();
-            if (dgvTipos.Columns["Id"] != null)
-                dgvTipos.Columns["Id"].Visible = false;
-            if (dgvTipos.Columns["Descricao"] != null)
-                dgvTipos.Columns["Descricao"].Visible = false;
-            if (artigo != null)
-            {
-                foreach (DataGridViewRow row in dgvTipos.Rows)
-                {
-                    if ((int)row.Cells["Id"].Value == artigo.Tipo.Id)
-                    {
-                        row.Selected = true;
-                        dgvTipos.CurrentCell = row.Cells["Nome"];
-                        break;
-                    }
-                }
-            }
+
         }
     }
 }

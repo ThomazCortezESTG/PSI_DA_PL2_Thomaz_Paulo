@@ -11,6 +11,9 @@ namespace iShopping.Controllers
 {
     internal class ItemController
     {
+
+        private CompraController compraController = new CompraController();
+
         public List<Item_previsto> getArtigosPrevistos(int id)
         {
             using (var db = new ShoppingContext())
@@ -104,6 +107,9 @@ namespace iShopping.Controllers
             {
                 using (var db = new ShoppingContext())
                 {
+                    float preco_total = 0;
+
+                    // Atualiza itens previstos
                     foreach (var item in itens)
                     {
                         var itemBD = db.Itens.Find(item.Id);
@@ -111,36 +117,30 @@ namespace iShopping.Controllers
                         {
                             previsto.Quantidade = item.Quantidade;
                             previsto.Preco_unitario = item.Preco_unitario;
+                            preco_total += item.Preco_unitario * item.Quantidade;
                         }
                     }
+
+                    var naoPrevistosBD = db.Itens
+                        .OfType<Item_nao_previsto>()
+                        .Where(i => i.Compra.Id == compraId)
+                        .ToList();
+                    db.Itens.RemoveRange(naoPrevistosBD);
 
                     foreach (var item in itensNaoPrevistos)
                     {
-                        if (item.Id == 0)
-                        {
-                            var compra = db.Compras.Find(compraId);
-                            item.Compra = compra;
-                            db.Itens.Add(item);
-                        }
-                        else
-                        {
-                            var itemBD = db.Itens.Find(item.Id);
-                            if (itemBD is Item_nao_previsto naoPrevisto)
-                            {
-                                naoPrevisto.Quantidade = item.Quantidade;
-                                naoPrevisto.Preco_unitario = item.Preco_unitario;
-                            }
-                        }
+                        var compra = db.Compras.Find(compraId);
+                        var artigo = db.Artigos.Find(item.Artigo.Id);
+                        db.Itens.Add(new Item_nao_previsto(item.Quantidade, item.Preco_unitario, artigo, compra, ""));
+                        preco_total += item.Preco_unitario * item.Quantidade;
                     }
 
+                    compraController.meterPreco(compraId, preco_total);
                     db.SaveChanges();
-                    return "3"; // sucesso
+                    return "3";
                 }
             }
-            catch
-            {
-                return "2"; // erro
-            }
+            catch { return "2"; }
         }
     }
 }
