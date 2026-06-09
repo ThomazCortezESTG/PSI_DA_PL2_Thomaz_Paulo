@@ -79,7 +79,6 @@ namespace iShopping.Views
             nudQuantidade.Value = 1;
             txtPreco.Text = "";
             cmb(true);
-            guardarBTN(false);
         }
 
         private void cmb(bool estado) {
@@ -103,7 +102,6 @@ namespace iShopping.Views
             CarregarArtigosPorTipo();
             cmbArtigo.SelectedValue = item.Artigo.Id;
             cmb(false);
-            guardarBTN(true);
         }
 
         private void dgvItensNaoPrevistos_SelectionChanged(object sender, EventArgs e)
@@ -123,7 +121,6 @@ namespace iShopping.Views
             CarregarArtigosPorTipo();
             cmbArtigo.SelectedValue = item.Artigo.Id;
             cmb(true);
-            guardarBTN(true);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -208,7 +205,6 @@ namespace iShopping.Views
             _itens_nao_previstos.RemoveAt(index);
             AtualizarGrelha();
             cmb(true);
-            guardarBTN(false);
         }
 
         private void AtualizarGrelha()
@@ -289,12 +285,8 @@ namespace iShopping.Views
             cmbTipo.SelectedIndex = -1;
             cmbArtigo.DataSource = null;
             nudQuantidade.Value = 1;
-            guardarBTN(false);
         }
 
-        private void guardarBTN(bool gaurdar) {
-            btnGuardar.Enabled = gaurdar;
-        }
 
         private void btnAlterarItem_Click(object sender, EventArgs e)
         {
@@ -334,7 +326,6 @@ namespace iShopping.Views
 
             AtualizarGrelha();
             reset();
-            guardarBTN(true);
         }
 
         private string ver_input() {
