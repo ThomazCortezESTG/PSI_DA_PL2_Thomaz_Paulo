@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormTipo : Form
+    public partial class FormTipo : FormBase
     {
         private TipoController tipoController;
         private Tipo_de_artigo tipo;

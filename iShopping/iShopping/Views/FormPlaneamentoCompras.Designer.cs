@@ -63,20 +63,20 @@
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.labelUser);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1144, 122);
+            this.panel1.Size = new System.Drawing.Size(572, 63);
             this.panel1.TabIndex = 0;
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.White;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.Location = new System.Drawing.Point(1011, 60);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(506, 31);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(116, 51);
+            this.btnLogout.Size = new System.Drawing.Size(58, 27);
             this.btnLogout.TabIndex = 1;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -86,9 +86,10 @@
             // 
             this.labelUser.BackColor = System.Drawing.Color.White;
             this.labelUser.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUser.Location = new System.Drawing.Point(251, 12);
+            this.labelUser.Location = new System.Drawing.Point(126, 6);
+            this.labelUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(889, 45);
+            this.labelUser.Size = new System.Drawing.Size(444, 23);
             this.labelUser.TabIndex = 1;
             this.labelUser.Text = "Bem vindo, user!";
             this.labelUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -100,9 +101,10 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(12, 28);
+            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 59);
+            this.label1.Size = new System.Drawing.Size(118, 30);
             this.label1.TabIndex = 8;
             this.label1.Text = "iShopping";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -111,8 +113,8 @@
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.White;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer1.Location = new System.Drawing.Point(12, 140);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer1.Location = new System.Drawing.Point(6, 73);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -136,18 +138,19 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvCompras);
             this.splitContainer1.Panel2.Controls.Add(this.cmbFiltro);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(1144, 574);
-            this.splitContainer1.SplitterDistance = 204;
+            this.splitContainer1.Size = new System.Drawing.Size(572, 298);
+            this.splitContainer1.SplitterDistance = 102;
+            this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
             // 
             // btnUtilizadores
             // 
             this.btnUtilizadores.BackColor = System.Drawing.Color.White;
             this.btnUtilizadores.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUtilizadores.Location = new System.Drawing.Point(3, 489);
-            this.btnUtilizadores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUtilizadores.Location = new System.Drawing.Point(2, 254);
+            this.btnUtilizadores.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnUtilizadores.Name = "btnUtilizadores";
-            this.btnUtilizadores.Size = new System.Drawing.Size(187, 75);
+            this.btnUtilizadores.Size = new System.Drawing.Size(94, 39);
             this.btnUtilizadores.TabIndex = 15;
             this.btnUtilizadores.Text = "Utilizadores";
             this.btnUtilizadores.UseVisualStyleBackColor = false;
@@ -157,10 +160,10 @@
             // 
             this.btnEstatisticas.BackColor = System.Drawing.Color.White;
             this.btnEstatisticas.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstatisticas.Location = new System.Drawing.Point(3, 408);
-            this.btnEstatisticas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEstatisticas.Location = new System.Drawing.Point(2, 212);
+            this.btnEstatisticas.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnEstatisticas.Name = "btnEstatisticas";
-            this.btnEstatisticas.Size = new System.Drawing.Size(187, 75);
+            this.btnEstatisticas.Size = new System.Drawing.Size(94, 39);
             this.btnEstatisticas.TabIndex = 14;
             this.btnEstatisticas.Text = "Estatísticas";
             this.btnEstatisticas.UseVisualStyleBackColor = false;
@@ -171,10 +174,10 @@
             this.btnCompras.BackColor = System.Drawing.Color.LightGreen;
             this.btnCompras.Enabled = false;
             this.btnCompras.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompras.Location = new System.Drawing.Point(3, 328);
-            this.btnCompras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCompras.Location = new System.Drawing.Point(2, 171);
+            this.btnCompras.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(187, 75);
+            this.btnCompras.Size = new System.Drawing.Size(94, 39);
             this.btnCompras.TabIndex = 13;
             this.btnCompras.Text = "Compras";
             this.btnCompras.UseVisualStyleBackColor = false;
@@ -184,10 +187,10 @@
             // 
             this.btnOrcamentos.BackColor = System.Drawing.Color.White;
             this.btnOrcamentos.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrcamentos.Location = new System.Drawing.Point(3, 246);
-            this.btnOrcamentos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOrcamentos.Location = new System.Drawing.Point(2, 128);
+            this.btnOrcamentos.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnOrcamentos.Name = "btnOrcamentos";
-            this.btnOrcamentos.Size = new System.Drawing.Size(187, 75);
+            this.btnOrcamentos.Size = new System.Drawing.Size(94, 39);
             this.btnOrcamentos.TabIndex = 12;
             this.btnOrcamentos.Text = "Orçamentos";
             this.btnOrcamentos.UseVisualStyleBackColor = false;
@@ -197,10 +200,10 @@
             // 
             this.btnArtigos.BackColor = System.Drawing.Color.White;
             this.btnArtigos.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArtigos.Location = new System.Drawing.Point(3, 165);
-            this.btnArtigos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnArtigos.Location = new System.Drawing.Point(2, 86);
+            this.btnArtigos.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnArtigos.Name = "btnArtigos";
-            this.btnArtigos.Size = new System.Drawing.Size(187, 75);
+            this.btnArtigos.Size = new System.Drawing.Size(94, 39);
             this.btnArtigos.TabIndex = 11;
             this.btnArtigos.Text = "Artigos";
             this.btnArtigos.UseVisualStyleBackColor = false;
@@ -210,10 +213,10 @@
             // 
             this.btnInicio.BackColor = System.Drawing.Color.White;
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInicio.Location = new System.Drawing.Point(3, 2);
-            this.btnInicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInicio.Location = new System.Drawing.Point(2, 1);
+            this.btnInicio.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Size = new System.Drawing.Size(187, 75);
+            this.btnInicio.Size = new System.Drawing.Size(94, 39);
             this.btnInicio.TabIndex = 10;
             this.btnInicio.Text = "Início";
             this.btnInicio.UseVisualStyleBackColor = false;
@@ -223,10 +226,10 @@
             // 
             this.buttonTiposArtigo.BackColor = System.Drawing.Color.White;
             this.buttonTiposArtigo.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTiposArtigo.Location = new System.Drawing.Point(3, 84);
-            this.buttonTiposArtigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonTiposArtigo.Location = new System.Drawing.Point(2, 44);
+            this.buttonTiposArtigo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.buttonTiposArtigo.Name = "buttonTiposArtigo";
-            this.buttonTiposArtigo.Size = new System.Drawing.Size(187, 75);
+            this.buttonTiposArtigo.Size = new System.Drawing.Size(94, 39);
             this.buttonTiposArtigo.TabIndex = 9;
             this.buttonTiposArtigo.Text = "Tipos de Artigo";
             this.buttonTiposArtigo.UseVisualStyleBackColor = false;
@@ -236,10 +239,10 @@
             // 
             this.btnExportar.BackColor = System.Drawing.Color.White;
             this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportar.Location = new System.Drawing.Point(729, 476);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExportar.Location = new System.Drawing.Point(364, 248);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(187, 75);
+            this.btnExportar.Size = new System.Drawing.Size(94, 39);
             this.btnExportar.TabIndex = 24;
             this.btnExportar.Text = "Exportar";
             this.btnExportar.UseVisualStyleBackColor = false;
@@ -247,10 +250,10 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Location = new System.Drawing.Point(759, 9);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFechar.Location = new System.Drawing.Point(380, 5);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(168, 65);
+            this.btnFechar.Size = new System.Drawing.Size(84, 34);
             this.btnFechar.TabIndex = 23;
             this.btnFechar.Text = "Fechar compra";
             this.btnFechar.UseVisualStyleBackColor = true;
@@ -258,10 +261,10 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(561, 9);
-            this.btnIniciar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIniciar.Location = new System.Drawing.Point(280, 5);
+            this.btnIniciar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(168, 65);
+            this.btnIniciar.Size = new System.Drawing.Size(84, 34);
             this.btnIniciar.TabIndex = 22;
             this.btnIniciar.Text = "Iniciar compra";
             this.btnIniciar.UseVisualStyleBackColor = true;
@@ -271,10 +274,10 @@
             // 
             this.btnApagar.BackColor = System.Drawing.Color.White;
             this.btnApagar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApagar.Location = new System.Drawing.Point(497, 476);
-            this.btnApagar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnApagar.Location = new System.Drawing.Point(248, 248);
+            this.btnApagar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnApagar.Name = "btnApagar";
-            this.btnApagar.Size = new System.Drawing.Size(187, 75);
+            this.btnApagar.Size = new System.Drawing.Size(94, 39);
             this.btnApagar.TabIndex = 21;
             this.btnApagar.Text = "Apagar";
             this.btnApagar.UseVisualStyleBackColor = false;
@@ -284,10 +287,10 @@
             // 
             this.btnEditar.BackColor = System.Drawing.Color.White;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(261, 476);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditar.Location = new System.Drawing.Point(130, 248);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(187, 75);
+            this.btnEditar.Size = new System.Drawing.Size(94, 39);
             this.btnEditar.TabIndex = 20;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -297,10 +300,10 @@
             // 
             this.btnNovaCompra.BackColor = System.Drawing.Color.White;
             this.btnNovaCompra.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovaCompra.Location = new System.Drawing.Point(31, 476);
-            this.btnNovaCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNovaCompra.Location = new System.Drawing.Point(16, 248);
+            this.btnNovaCompra.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.btnNovaCompra.Name = "btnNovaCompra";
-            this.btnNovaCompra.Size = new System.Drawing.Size(187, 75);
+            this.btnNovaCompra.Size = new System.Drawing.Size(94, 39);
             this.btnNovaCompra.TabIndex = 19;
             this.btnNovaCompra.Text = "+ Nova Compra";
             this.btnNovaCompra.UseVisualStyleBackColor = false;
@@ -308,23 +311,26 @@
             // 
             // dgvCompras
             // 
+            this.dgvCompras.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvCompras.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCompras.Location = new System.Drawing.Point(21, 84);
-            this.dgvCompras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvCompras.Location = new System.Drawing.Point(10, 44);
+            this.dgvCompras.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dgvCompras.Name = "dgvCompras";
+            this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowHeadersWidth = 82;
             this.dgvCompras.RowTemplate.Height = 33;
-            this.dgvCompras.Size = new System.Drawing.Size(895, 374);
+            this.dgvCompras.Size = new System.Drawing.Size(448, 194);
             this.dgvCompras.TabIndex = 5;
             this.dgvCompras.SelectionChanged += new System.EventHandler(this.dgvCompras_SelectionChanged);
             // 
             // cmbFiltro
             // 
             this.cmbFiltro.FormattingEnabled = true;
-            this.cmbFiltro.Location = new System.Drawing.Point(268, 22);
-            this.cmbFiltro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbFiltro.Location = new System.Drawing.Point(134, 11);
+            this.cmbFiltro.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cmbFiltro.Name = "cmbFiltro";
-            this.cmbFiltro.Size = new System.Drawing.Size(241, 33);
+            this.cmbFiltro.Size = new System.Drawing.Size(122, 21);
             this.cmbFiltro.TabIndex = 4;
             this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
             // 
@@ -333,20 +339,21 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 19);
+            this.label3.Location = new System.Drawing.Point(6, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(248, 37);
+            this.label3.Size = new System.Drawing.Size(130, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Filtrar por estado:";
             // 
             // FormPlaneamentoCompras
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 728);
+            this.ClientSize = new System.Drawing.Size(584, 379);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FormPlaneamentoCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPlaneamentoCompras";
