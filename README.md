@@ -29,4 +29,20 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 | Paulo         | 123           |
 
 ---
+
+### Guia de utilizador
+
+
+
+---
+
+### Membros do trabalho
+
+Nome : Thomaz Cortez Faria Barrago
+Número : 2025193333
+
+Nome : Paulo Zhang Liu
+Número : 2025179153
+
+---
 ![IPL Logo.](/ipllogo.png "Imagem do IPL.")
