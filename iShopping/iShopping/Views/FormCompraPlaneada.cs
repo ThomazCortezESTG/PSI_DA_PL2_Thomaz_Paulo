@@ -21,11 +21,13 @@ namespace iShopping.Views
         private ArtigoController _artigoController = new ArtigoController();
         private ItemController _itemController = new ItemController();
         private List<Item_previsto> _itens = new List<Item_previsto>();
-        public FormCompraPlaneada(Utilizador user, Compra compra)
+        private bool Estado;
+        public FormCompraPlaneada(Utilizador user, Compra compra,bool estado)
         {
             InitializeComponent();
             User = user;
             Compra = compra;
+            Estado = estado;
 
             CarregarTipos();
 
@@ -33,6 +35,7 @@ namespace iShopping.Views
                 PreencherDados();
             else
                 AtualizarBotoes(false);
+
         }
 
         private void CarregarTipos()
@@ -102,9 +105,17 @@ namespace iShopping.Views
             }
         }
 
+        private void perm_butoes(){
+            if (Estado) {
+                btnRemoverItem.Enabled = false;
+                btnAdicionarItem.Enabled = false;
+            }
+        }
+
         private void AtualizarBotoes(bool modoLeitura)
         {
             btnRemoverItem.Enabled = !modoLeitura && dgvItens.SelectedRows.Count > 0;
+            perm_butoes();
         }
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +126,7 @@ namespace iShopping.Views
         private void dgvItens_SelectionChanged(object sender, EventArgs e)
         {
             btnRemoverItem.Enabled = dgvItens.SelectedRows.Count > 0;
+            perm_butoes();
         }
 
         private void btnAdicionarItem_Click(object sender, EventArgs e)

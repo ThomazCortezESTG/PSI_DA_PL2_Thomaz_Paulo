@@ -176,7 +176,7 @@ namespace iShopping.Controllers
 
         // ── Exportar ─────────────────────────────────────────────────
 
-        public string exportarCompra(int id)
+        public string exportarCompraCSV(int id)
         {
             try
             {
@@ -202,65 +202,54 @@ namespace iShopping.Controllers
 
                     using (SaveFileDialog dialog = new SaveFileDialog())
                     {
-                        dialog.Filter = "Text Files (*.txt)|*.txt";
-                        dialog.FileName = $"recibo_compra_{id}.txt";
+                        dialog.Filter = "CSV Files (*.csv)|*.csv";
+                        dialog.FileName = $"compra_{id}.csv";
 
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
-                            using (StreamWriter writer = new StreamWriter(dialog.FileName, false, Encoding.UTF8))
+                            using (StreamWriter writer = new StreamWriter(dialog.FileName, false, new UTF8Encoding(true)))
                             {
-                                string linha = new string('=', 48);
-                                string linhafina = new string('-', 48);
+                                string sep = "\t";
 
-                                writer.WriteLine(linha);
-                                writer.WriteLine("              iSHOPPING");
-                                writer.WriteLine($"          RECIBO #{compra.Id}");
-                                writer.WriteLine(linha);
-                                writer.WriteLine($"  Descricao : {compra.Descricao ?? "—"}");
-                                writer.WriteLine($"  Utilizador: {compra.Utilizador?.Nome ?? "—"}");
-                                writer.WriteLine($"  Fechada em: {compra.Data_fecho:dd/MM/yyyy HH:mm}");
-                                writer.WriteLine($"  Exportado : {DateTime.Now:dd/MM/yyyy HH:mm}");
+                                // Cabeçalho geral
+                                writer.WriteLine($"Descrição{sep}Utilizador{sep}Data Fecho{sep}{sep}Total");
+                                writer.WriteLine($"{compra.Descricao ?? ""}{sep}{sep}{compra.Utilizador?.Nome ?? ""}{sep}{compra.Data_fecho:dd/MM/yyyy HH:mm}{sep}{compra.Preco_total:F2} EUR");
+
                                 writer.WriteLine();
 
                                 // Itens previstos
-                                writer.WriteLine("  ITENS PREVISTOS");
-                                writer.WriteLine(linhafina);
-                                writer.WriteLine($"  {"#",-4} {"Artigo",-18} {"Prev",5} {"Adq",5} {"Preco",8}");
-                                writer.WriteLine(linhafina);
+                                writer.WriteLine("=== ITENS PREVISTOS ===");
+                                writer.WriteLine($"Artigo{sep}{sep}{sep}Qtd Prevista{sep}Qtd Adquirida{sep}Preço Unit.{sep}Total{sep}{sep}Adquirido");
                                 if (!itensPrevistos.Any())
-                                    writer.WriteLine("  Sem itens previstos.");
+                                    writer.WriteLine("Nenhum item previsto.");
                                 else
-                                {
-                                    int n = 1;
                                     foreach (var item in itensPrevistos)
-                                        writer.WriteLine($"  {n++,-4} {item.Artigo?.Nome ?? "—",-18} {item.Quantidade_prevista,5} {item.Quantidade,5} {item.Preco_unitario,8:F2}");
-                                }
-                                writer.WriteLine(linha);
-                                writer.WriteLine();
-                                writer.WriteLine(linha);
-                                // Itens não previstos
-                                writer.WriteLine("  ITENS NAO PREVISTOS");
-                                writer.WriteLine(linhafina);
-                                writer.WriteLine($"  {"#",-4} {"Artigo",-18} {"Adq",5} {"Preco",8}  {"Obs",-10}");
-                                writer.WriteLine(linhafina);
-                                if (!itensNaoPrevistos.Any())
-                                    writer.WriteLine("  Sem itens nao previstos.");
-                                else
-                                {
-                                    int n = 1;
-                                    foreach (var item in itensNaoPrevistos)
-                                        writer.WriteLine($"  {n++,-4} {item.Artigo?.Nome ?? "—",-18} {item.Quantidade,5} {item.Preco_unitario,8:F2}  {item.Observacoes ?? "—",-10}");
-                                }
+                                        writer.WriteLine($"{item.Artigo?.Nome ?? ""}{sep}{sep}{item.Quantidade_prevista}{sep}{sep}{item.Quantidade}{sep}{sep}{item.Preco_unitario:F2} EUR{sep}{item.Quantidade * item.Preco_unitario:F2} EUR{sep}{(item.Quantidade >= item.Quantidade_prevista ? "Sim" : "Não")}");
 
                                 writer.WriteLine();
-                                writer.WriteLine(linhafina);
-                                writer.WriteLine($"  Total gasto: {compra.Preco_total:F2} EUR");
-                                writer.WriteLine(linha);
-                                writer.WriteLine("      Gerado pelo iShopping");
-                                writer.WriteLine(linha);
+
+                                // Itens não previstos
+                                writer.WriteLine("=== ITENS NAO PREVISTOS ===");
+                                writer.WriteLine($"Artigo{sep}Qtd{sep}Preço Unit.{sep}Total{sep}Observações");
+                                if (!itensNaoPrevistos.Any())
+                                    writer.WriteLine("Nenhum item imprevisto foi adquirido.");
+                                else
+                                    foreach (var item in itensNaoPrevistos)
+                                        writer.WriteLine($"{item.Artigo?.Nome ?? ""}{sep}{item.Quantidade}{sep}{item.Preco_unitario:F2} EUR{sep}{item.Quantidade * item.Preco_unitario:F2} EUR{sep}{item.Observacoes ?? "—"}");
+
+                                writer.WriteLine();
+
+                                // Totais
+                                float totalPrevistos = itensPrevistos.Sum(i => i.Quantidade * i.Preco_unitario);
+                                float totalNaoPrevistos = itensNaoPrevistos.Sum(i => i.Quantidade * i.Preco_unitario);
+
+                                writer.WriteLine("=== RESUMO ===");
+                                writer.WriteLine($"Total Previstos{sep}{sep}{totalPrevistos:F2} EUR");
+                                writer.WriteLine($"Total Não Previstos{sep}{totalNaoPrevistos:F2} EUR");
+                                writer.WriteLine($"Total Gasto{sep}{sep}{compra.Preco_total:F2} EUR");
                             }
 
-                            MessageBox.Show("Recibo exportado com sucesso!", "Sucesso",
+                            MessageBox.Show("CSV exportado com sucesso!", "Sucesso",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return "3";
                         }
