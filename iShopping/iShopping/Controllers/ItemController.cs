@@ -80,18 +80,23 @@ namespace iShopping.Controllers
                     if (compra == null) return "1";
                     if (compra.Fechada) return "4";
 
+                    // Remove só uma vez
+                    var previstosBD = db.Itens
+                        .OfType<Item_previsto>()
+                        .Where(i => i.Compra.Id == id)
+                        .ToList();
+                    db.Itens.RemoveRange(previstosBD);
+
                     var utilizadorDb = db.Utilizadores.Find(utilizador.Id);
                     compra.Descricao = descricao;
                     compra.alterar_atualizacao(utilizadorDb);
 
-                    db.Itens.RemoveRange(compra.Itens);
-                    compra.Itens.Clear();
-
+                    // Adiciona os novos
                     foreach (var item in itens)
                     {
                         var artigoDb = db.Artigos.Find(item.Artigo.Id);
                         if (artigoDb != null)
-                            compra.Itens.Add(new Item_previsto(0, 0, artigoDb, compra, item.Quantidade_prevista));
+                            db.Itens.Add(new Item_previsto(0, 0, artigoDb, compra, item.Quantidade_prevista));
                     }
 
                     db.SaveChanges();
@@ -107,6 +112,7 @@ namespace iShopping.Controllers
             {
                 using (var db = new ShoppingContext())
                 {
+                    bool ver = false; //verifica se o utilizador adquiriu 1 item
                     float preco_total = 0;
 
                     // Atualiza itens previstos
@@ -118,6 +124,9 @@ namespace iShopping.Controllers
                             previsto.Quantidade = item.Quantidade;
                             previsto.Preco_unitario = item.Preco_unitario;
                             preco_total += item.Preco_unitario * item.Quantidade;
+                            if (item.Quantidade > 0) { 
+                                ver = true;
+                            }
                         }
                     }
 
@@ -133,6 +142,13 @@ namespace iShopping.Controllers
                         var artigo = db.Artigos.Find(item.Artigo.Id);
                         db.Itens.Add(new Item_nao_previsto(item.Quantidade, item.Preco_unitario, artigo, compra, ""));
                         preco_total += item.Preco_unitario * item.Quantidade;
+                        if (item.Quantidade > 0)
+                        {
+                            ver = true;
+                        }
+                    }
+                    if (!ver) {
+                        return "4";
                     }
 
                     compraController.meterPreco(compraId, preco_total);

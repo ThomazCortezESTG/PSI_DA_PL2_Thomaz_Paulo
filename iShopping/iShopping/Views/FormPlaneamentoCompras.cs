@@ -64,6 +64,7 @@ namespace iShopping.Views
             btnEditar.Enabled = temSelecao;
             btnApagar.Enabled = temSelecao;
             btnIniciar.Enabled = temSelecao;
+            btnExportar.Enabled = temSelecao;
         }
 
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace iShopping.Views
 
         private void btnNovaCompra_Click(object sender, EventArgs e)
         {
-            FormCompraPlaneada form = new FormCompraPlaneada(User, null);
+            FormCompraPlaneada form = new FormCompraPlaneada(User, null,false);
             form.ShowDialog();
             CarregarCompras();
         }
@@ -89,14 +90,7 @@ namespace iShopping.Views
         {
             var compra = _controller.getCompraPorId(selectedId);
 
-            if (compra.Fechada)
-            {
-                MessageBox.Show("Esta compra está fechada e não pode ser editada!", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            FormCompraPlaneada form = new FormCompraPlaneada(User, compra);
+            FormCompraPlaneada form = new FormCompraPlaneada(User, compra, compra.Fechada);
             form.ShowDialog();
             CarregarCompras();
         }
@@ -158,7 +152,7 @@ namespace iShopping.Views
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            string resposta = _controller.exportarCompra(selectedId);
+            string resposta = _controller.exportarCompraCSV(selectedId);
 
 
             switch (resposta)
@@ -184,49 +178,8 @@ namespace iShopping.Views
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            if (selectedId == -1) return;
-
-            var compra = _controller.getCompraPorId(selectedId);
-            if (compra == null) return;
-
-            if (compra.Fechada)
-            {
-                MessageBox.Show("Esta compra já está fechada.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            var confirm = MessageBox.Show(
-                "Tens a certeza que queres fechar esta compra?\nApós fechar não poderá ser editada.",
-                "Confirmar fecho",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirm != DialogResult.Yes) return;
-
-            string resultado = _controller.fecharCompra(selectedId, User);
-            switch (resultado)
-            {
-                case "3":
-                    MessageBox.Show("Compra fechada com sucesso!", "Sucesso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    selectedId = -1;
-                    CarregarCompras();
-                    AtualizarBotoes();
-                    break;
-                case "4":
-                    MessageBox.Show("A compra já estava fechada.", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                case "1":
-                    MessageBox.Show("Compra não encontrada.", "Erro",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                default:
-                    MessageBox.Show("Erro ao fechar a compra.", "Erro",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
+           
+            
         }
     }
 }

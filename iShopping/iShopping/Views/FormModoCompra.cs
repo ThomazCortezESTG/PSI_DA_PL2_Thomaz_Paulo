@@ -30,9 +30,11 @@ namespace iShopping.Views
         private OrcamentoController _orcamentoController = new OrcamentoController();
         private float _orcamentoMes = 0;
         private float disponivel = 0;
+        private int CompraID;
         public FormModoCompra(int compraId, Utilizador utilizador)
         {
             InitializeComponent();
+            CompraID = compraId;
             User = utilizador;
             Compra = _compraController.getCompraPorId(compraId);
             preco_total_antigo = Compra.Preco_total;
@@ -76,6 +78,13 @@ namespace iShopping.Views
             cmbArtigo.DataSource = null;
             nudQuantidade.Value = 1;
             txtPreco.Text = "";
+            cmb(true);
+            guardarBTN(false);
+        }
+
+        private void cmb(bool estado) {
+            cmbArtigo.Enabled = estado;
+            cmbTipo.Enabled = estado;
         }
 
         private void dgvItensPrevistos_SelectionChanged(object sender, EventArgs e)
@@ -93,7 +102,8 @@ namespace iShopping.Views
             cmbTipo.SelectedValue = item.Artigo.Tipo.Id;
             CarregarArtigosPorTipo();
             cmbArtigo.SelectedValue = item.Artigo.Id;
-
+            cmb(false);
+            guardarBTN(true);
         }
 
         private void dgvItensNaoPrevistos_SelectionChanged(object sender, EventArgs e)
@@ -112,6 +122,8 @@ namespace iShopping.Views
             cmbTipo.SelectedValue = item.Artigo.Tipo.Id;
             CarregarArtigosPorTipo();
             cmbArtigo.SelectedValue = item.Artigo.Id;
+            cmb(true);
+            guardarBTN(true);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -123,6 +135,7 @@ namespace iShopping.Views
                 return;
             }
             string resposta = _itemController.guardarCompra(Compra.Id, _itens, _itens_nao_previstos);
+            _compraController.fecharCompra(CompraID, User);
             
             switch (resposta) {
                 case "1":
@@ -138,6 +151,10 @@ namespace iShopping.Views
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     atualizarOrcamento();
                     this.Close();
+                    break;
+                case "4":
+                    MessageBox.Show("Tem que adquirir pelo menos 1 item!", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
 
@@ -190,6 +207,8 @@ namespace iShopping.Views
             int index = dgvItensNaoPrevistos.SelectedRows[0].Index;
             _itens_nao_previstos.RemoveAt(index);
             AtualizarGrelha();
+            cmb(true);
+            guardarBTN(false);
         }
 
         private void AtualizarGrelha()
@@ -270,6 +289,11 @@ namespace iShopping.Views
             cmbTipo.SelectedIndex = -1;
             cmbArtigo.DataSource = null;
             nudQuantidade.Value = 1;
+            guardarBTN(false);
+        }
+
+        private void guardarBTN(bool gaurdar) {
+            btnGuardar.Enabled = gaurdar;
         }
 
         private void btnAlterarItem_Click(object sender, EventArgs e)
@@ -310,6 +334,7 @@ namespace iShopping.Views
 
             AtualizarGrelha();
             reset();
+            guardarBTN(false);
         }
 
         private string ver_input() {
@@ -319,9 +344,9 @@ namespace iShopping.Views
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "1";
             }
-            if (!float.TryParse(txtPreco.Text, out float novoPreco) || novoPreco < 0)
+            if (!float.TryParse(txtPreco.Text, out float novoPreco) || novoPreco <= 0)
             {
-                MessageBox.Show("Preço inválido!", "Aviso",
+                MessageBox.Show("Preço inválido ou igual a 0!", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return "2";
             }
