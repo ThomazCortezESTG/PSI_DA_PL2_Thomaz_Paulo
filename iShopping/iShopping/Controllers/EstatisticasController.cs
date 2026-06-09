@@ -109,10 +109,9 @@ namespace iShopping.Controllers
                 var comprasMesmoAno = db.Compras
                     .Where(c => c.Fechada && c.Data_fecho.HasValue)
                     .ToList()
-                    // Filtra as da mesma semana do mês em meses anteriores
-                    .Where(c => SemanaDoMes(c.Data_criacao) == semanaAtual
-                        && !(c.Data_criacao.Month == DateTime.Now.Month
-                          && c.Data_criacao.Year == DateTime.Now.Year))
+                    .Where(c => SemanaDoMes(c.Data_fecho.Value) == semanaAtual
+                        && !(c.Data_fecho.Value.Month == DateTime.Now.Month
+                          && c.Data_fecho.Value.Year == DateTime.Now.Year))
                     .Select(c => c.Id)
                     .ToList();
 
