@@ -1,6 +1,7 @@
 # Projeto IShopping
 
-Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de compras com base num orçamento definido pelo utilizador, realizar a compra e no fim imprimir um recibo caso  outilizador o desejar.
+Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de compras com base num orçamento definido pelo utilizador, realizar a compra e no fim imprimir um recibo caso o utilizador o desejar.
+
 ---
 
 ## Funcionalidades
@@ -18,31 +19,33 @@ Este projeto tem como objetivo ajudar utilizadores a fazer compras uma lista de 
 ## Tecnologias Utilizadas
 
 - Linguagem: C#
-- Interface: Windows forms
+- Interface: Windows Forms
 
 ---
 
-### Users
+## Requisitos de Instalação
+
+- Windows 10 ou superior
+- [Visual Studio 2019 ou superior](https://visualstudio.microsoft.com/) com o workload **.NET desktop development** instalado
+- [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+- [SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb) — normalmente instalado automaticamente com o Visual Studio
+
+## Guia de Instalação
+
+1. Clonar ou extrair o projeto para uma pasta local
+2. Abrir o ficheiro `iShopping.sln` no Visual Studio
+3. Abrir a **Package Manager Console** (Tools → NuGet Package Manager → Package Manager Console)
+4. Correr o comando `Update-Database` para criar a base de dados
+5. Compilar o projeto com **Build → Build Solution** (`Ctrl+Shift+B`)
+6. Executar o projeto com **F5**
+
+---
+
+## Users
 
 | User          | Password      |
 | ------------- |:-------------:|
 | Paulo         | 123           |
-
----
-
-### Guia de utilizador
-
-
-
----
-
-### Membros do trabalho
-
-Nome : Thomaz Cortez Faria Barrago
-Número : 2025193333
-
-Nome : Paulo Zhang Liu
-Número : 2025179153
 
 ---
 ![IPL Logo.](/ipllogo.png "Imagem do IPL.")
