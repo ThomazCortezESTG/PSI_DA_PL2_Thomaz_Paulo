@@ -94,7 +94,7 @@ namespace iShopping.Controllers
                 {
                     var compra = db.Compras.Find(id);
                     if (compra == null) return "1";
-                    if (compra.Fechada) return "4"; // não pode editar fechada
+                    if (compra.Fechada) return "4"; // não pode editar uma compra fechada
 
                     var utilizadorDb = db.Utilizadores.Find(utilizador.Id);
                     compra.Descricao = descricao;

@@ -102,7 +102,6 @@ namespace iShopping.Views
 
             if (confirm == DialogResult.Yes)
             {
-                _controller_orcamento.ReporOrcamentoDoMes(_controller.getTotalCompra(selectedId));
                 string resultado = _controller.apagarCompra(selectedId);
 
                 if (resultado == "4")

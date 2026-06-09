@@ -43,6 +43,7 @@ namespace iShopping.Views
             cmbTipo.DisplayMember = "Nome";
             cmbTipo.ValueMember = "Id";
             cmbTipo.DataSource = tipoController.getTipos();
+
             cmbTipo.SelectedIndex = -1;
             cmbTipo.SelectedIndexChanged += cmbTipo_SelectedIndexChanged; // volta a ligar
         }
@@ -51,7 +52,7 @@ namespace iShopping.Views
         {
             if(cmbTipo.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleciona um artigo!", "Aviso",
+                MessageBox.Show("Seleciona um tipo de artigo!", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
