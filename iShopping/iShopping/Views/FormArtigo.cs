@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormArtigo : Form
+    public partial class FormArtigo : FormBase
     {
         private ArtigoController artigoController;
         private Artigo artigo;
@@ -97,6 +97,11 @@ namespace iShopping.Views
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

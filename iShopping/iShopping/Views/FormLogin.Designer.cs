@@ -45,10 +45,10 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Location = new System.Drawing.Point(214, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(146, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 45);
+            this.label1.Size = new System.Drawing.Size(118, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "iShopping";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -58,28 +58,28 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 82);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(17, 66);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 30);
+            this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Username:";
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(129, 87);
-            this.tbUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbUsername.Location = new System.Drawing.Point(91, 70);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(447, 26);
+            this.tbUsername.Size = new System.Drawing.Size(286, 20);
             this.tbUsername.TabIndex = 2;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(129, 146);
-            this.tbPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbPassword.Location = new System.Drawing.Point(91, 108);
+            this.tbPassword.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(447, 26);
+            this.tbPassword.Size = new System.Drawing.Size(286, 20);
             this.tbPassword.TabIndex = 4;
             // 
             // label3
@@ -87,20 +87,20 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 141);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(17, 105);
+            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 30);
+            this.label3.Size = new System.Drawing.Size(70, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Password:";
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(250, 201);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Location = new System.Drawing.Point(125, 146);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(106, 49);
+            this.btnLogin.Size = new System.Drawing.Size(155, 32);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -111,10 +111,10 @@
             this.linkRedirect.AutoSize = true;
             this.linkRedirect.BackColor = System.Drawing.Color.White;
             this.linkRedirect.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkRedirect.Location = new System.Drawing.Point(155, 282);
-            this.linkRedirect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkRedirect.Location = new System.Drawing.Point(108, 198);
+            this.linkRedirect.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.linkRedirect.Name = "linkRedirect";
-            this.linkRedirect.Size = new System.Drawing.Size(267, 21);
+            this.linkRedirect.Size = new System.Drawing.Size(197, 13);
             this.linkRedirect.TabIndex = 6;
             this.linkRedirect.TabStop = true;
             this.linkRedirect.Text = "Não tem uma conta? Registe-se aqui.";
@@ -125,10 +125,10 @@
             this.btnClose.BackColor = System.Drawing.Color.White;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Red;
-            this.btnClose.Location = new System.Drawing.Point(519, 20);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(346, 13);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(46, 38);
+            this.btnClose.Size = new System.Drawing.Size(31, 25);
             this.btnClose.TabIndex = 17;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -136,9 +136,9 @@
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(400, 234);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.linkRedirect);
             this.Controls.Add(this.btnLogin);
@@ -147,7 +147,7 @@
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";
