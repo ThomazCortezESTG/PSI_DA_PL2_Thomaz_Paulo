@@ -334,7 +334,7 @@ namespace iShopping.Views
 
             AtualizarGrelha();
             reset();
-            guardarBTN(false);
+            guardarBTN(true);
         }
 
         private string ver_input() {
